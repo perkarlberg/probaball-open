@@ -1,0 +1,1642 @@
+{
+  "_source": "Wikipedia 2026 FIFA World Cup (group + knockout) + ESPN fixtures, captured 2026-06",
+  "round_dates": {
+    "group_stage": {
+      "start": "2026-06-11",
+      "end": "2026-06-27"
+    },
+    "round_of_32": {
+      "start": "2026-06-28",
+      "end": "2026-07-03"
+    },
+    "round_of_16": {
+      "start": "2026-07-04",
+      "end": "2026-07-07"
+    },
+    "quarter_finals": {
+      "start": "2026-07-09",
+      "end": "2026-07-11"
+    },
+    "semi_finals": {
+      "start": "2026-07-14",
+      "end": "2026-07-15"
+    },
+    "third_place": {
+      "date": "2026-07-18"
+    },
+    "final": {
+      "date": "2026-07-19"
+    }
+  },
+  "third_place_slots": {
+    "74": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "F"
+    ],
+    "77": [
+      "C",
+      "D",
+      "F",
+      "G",
+      "H"
+    ],
+    "79": [
+      "C",
+      "E",
+      "F",
+      "H",
+      "I"
+    ],
+    "80": [
+      "E",
+      "H",
+      "I",
+      "J",
+      "K"
+    ],
+    "81": [
+      "B",
+      "E",
+      "F",
+      "I",
+      "J"
+    ],
+    "82": [
+      "A",
+      "E",
+      "H",
+      "I",
+      "J"
+    ],
+    "85": [
+      "E",
+      "F",
+      "G",
+      "I",
+      "J"
+    ],
+    "87": [
+      "D",
+      "E",
+      "I",
+      "J",
+      "L"
+    ]
+  },
+  "group_stage": [
+    {
+      "match_no": 1,
+      "date": "2026-06-11",
+      "group": "A",
+      "home": "Mexiko",
+      "away": "Sydafrika",
+      "city": "Mexico City",
+      "result": {
+        "home": 2,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.7238,
+        "p_draw": 0.1924,
+        "p_away": 0.0838
+      }
+    },
+    {
+      "match_no": 2,
+      "date": "2026-06-11",
+      "group": "A",
+      "home": "Sydkorea",
+      "away": "Tjeckien",
+      "city": "Zapopan",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.3572,
+        "p_draw": 0.2759,
+        "p_away": 0.367
+      }
+    },
+    {
+      "match_no": 3,
+      "date": "2026-06-12",
+      "group": "B",
+      "home": "Kanada",
+      "away": "Bosnien",
+      "city": "Toronto",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.5824,
+        "p_draw": 0.2436,
+        "p_away": 0.174
+      }
+    },
+    {
+      "match_no": 4,
+      "date": "2026-06-12",
+      "group": "D",
+      "home": "USA",
+      "away": "Paraguay",
+      "city": "Inglewood",
+      "result": {
+        "home": 4,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.4944,
+        "p_draw": 0.2638,
+        "p_away": 0.2418
+      }
+    },
+    {
+      "match_no": 5,
+      "date": "2026-06-13",
+      "group": "B",
+      "home": "Qatar",
+      "away": "Schweiz",
+      "city": "Santa Clara",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.089,
+        "p_draw": 0.1965,
+        "p_away": 0.7145
+      }
+    },
+    {
+      "match_no": 6,
+      "date": "2026-06-13",
+      "group": "C",
+      "home": "Brasilien",
+      "away": "Marocko",
+      "city": "East Rutherford",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.4661,
+        "p_draw": 0.2683,
+        "p_away": 0.2656
+      }
+    },
+    {
+      "match_no": 7,
+      "date": "2026-06-13",
+      "group": "C",
+      "home": "Haiti",
+      "away": "Skottland",
+      "city": "Foxborough",
+      "result": {
+        "home": 0,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.1784,
+        "p_draw": 0.2453,
+        "p_away": 0.5763
+      }
+    },
+    {
+      "match_no": 8,
+      "date": "2026-06-13",
+      "group": "D",
+      "home": "Australien",
+      "away": "Turkiet",
+      "city": "Vancouver",
+      "result": {
+        "home": 2,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.2422,
+        "p_draw": 0.2639,
+        "p_away": 0.4939
+      }
+    },
+    {
+      "match_no": 9,
+      "date": "2026-06-14",
+      "group": "E",
+      "home": "Tyskland",
+      "away": "Curacao",
+      "city": "Houston",
+      "result": {
+        "home": 7,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.8504,
+        "p_draw": 0.1255,
+        "p_away": 0.0242
+      }
+    },
+    {
+      "match_no": 10,
+      "date": "2026-06-14",
+      "group": "F",
+      "home": "Nederländerna",
+      "away": "Japan",
+      "city": "Arlington",
+      "result": {
+        "home": 2,
+        "away": 2
+      },
+      "pred": {
+        "p_home": 0.4384,
+        "p_draw": 0.2717,
+        "p_away": 0.2898
+      }
+    },
+    {
+      "match_no": 11,
+      "date": "2026-06-14",
+      "group": "E",
+      "home": "Elfenbenskusten",
+      "away": "Ecuador",
+      "city": "Philadelphia",
+      "result": {
+        "home": 1,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.2147,
+        "p_draw": 0.2571,
+        "p_away": 0.5281
+      }
+    },
+    {
+      "match_no": 12,
+      "date": "2026-06-14",
+      "group": "F",
+      "home": "Sverige",
+      "away": "Tunisien",
+      "city": "Guadalupe",
+      "result": {
+        "home": 5,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.4742,
+        "p_draw": 0.2671,
+        "p_away": 0.2587
+      }
+    },
+    {
+      "match_no": 13,
+      "date": "2026-06-15",
+      "group": "H",
+      "home": "Spanien",
+      "away": "Kap Verde",
+      "city": "Atlanta",
+      "result": {
+        "home": 0,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.8873,
+        "p_draw": 0.1009,
+        "p_away": 0.0118
+      }
+    },
+    {
+      "match_no": 14,
+      "date": "2026-06-15",
+      "group": "G",
+      "home": "Belgien",
+      "away": "Egypten",
+      "city": "Seattle",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.5801,
+        "p_draw": 0.2442,
+        "p_away": 0.1756
+      }
+    },
+    {
+      "match_no": 15,
+      "date": "2026-06-15",
+      "group": "H",
+      "home": "Saudiarabien",
+      "away": "Uruguay",
+      "city": "Miami Gardens",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.1146,
+        "p_draw": 0.2141,
+        "p_away": 0.6712
+      }
+    },
+    {
+      "match_no": 16,
+      "date": "2026-06-15",
+      "group": "G",
+      "home": "Iran",
+      "away": "Nya Zeeland",
+      "city": "Inglewood",
+      "result": {
+        "home": 2,
+        "away": 2
+      },
+      "pred": {
+        "p_home": 0.5328,
+        "p_draw": 0.2561,
+        "p_away": 0.2111
+      }
+    },
+    {
+      "match_no": 17,
+      "date": "2026-06-16",
+      "group": "I",
+      "home": "Frankrike",
+      "away": "Senegal",
+      "city": "East Rutherford",
+      "result": {
+        "home": 3,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.677,
+        "p_draw": 0.2119,
+        "p_away": 0.1111
+      }
+    },
+    {
+      "match_no": 18,
+      "date": "2026-06-16",
+      "group": "I",
+      "home": "Irak",
+      "away": "Norge",
+      "city": "Foxborough",
+      "result": {
+        "home": 1,
+        "away": 4
+      },
+      "pred": {
+        "p_home": 0.0871,
+        "p_draw": 0.195,
+        "p_away": 0.718
+      }
+    },
+    {
+      "match_no": 19,
+      "date": "2026-06-16",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Algeriet",
+      "city": "Kansas City",
+      "result": {
+        "home": 3,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.7249,
+        "p_draw": 0.1919,
+        "p_away": 0.0832
+      }
+    },
+    {
+      "match_no": 20,
+      "date": "2026-06-16",
+      "group": "J",
+      "home": "Österrike",
+      "away": "Jordanien",
+      "city": "Santa Clara",
+      "result": {
+        "home": 3,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.6104,
+        "p_draw": 0.2353,
+        "p_away": 0.1543
+      }
+    },
+    {
+      "match_no": 21,
+      "date": "2026-06-17",
+      "group": "K",
+      "home": "Portugal",
+      "away": "DR Kongo",
+      "city": "Houston",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.7334,
+        "p_draw": 0.188,
+        "p_away": 0.0786
+      }
+    },
+    {
+      "match_no": 22,
+      "date": "2026-06-17",
+      "group": "L",
+      "home": "England",
+      "away": "Kroatien",
+      "city": "Arlington",
+      "result": {
+        "home": 4,
+        "away": 2
+      },
+      "pred": {
+        "p_home": 0.5877,
+        "p_draw": 0.2421,
+        "p_away": 0.1702
+      }
+    },
+    {
+      "match_no": 23,
+      "date": "2026-06-17",
+      "group": "L",
+      "home": "Ghana",
+      "away": "Panama",
+      "city": "Toronto",
+      "result": {
+        "home": 1,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.3213,
+        "p_draw": 0.2746,
+        "p_away": 0.4041
+      }
+    },
+    {
+      "match_no": 24,
+      "date": "2026-06-17",
+      "group": "K",
+      "home": "Uzbekistan",
+      "away": "Colombia",
+      "city": "Mexico City",
+      "result": {
+        "home": 1,
+        "away": 3
+      },
+      "pred": {
+        "p_home": 0.0798,
+        "p_draw": 0.1891,
+        "p_away": 0.7311
+      }
+    },
+    {
+      "match_no": 25,
+      "date": "2026-06-18",
+      "group": "A",
+      "home": "Tjeckien",
+      "away": "Sydafrika",
+      "city": "Atlanta",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.5236,
+        "p_draw": 0.2581,
+        "p_away": 0.2183
+      }
+    },
+    {
+      "match_no": 26,
+      "date": "2026-06-18",
+      "group": "B",
+      "home": "Schweiz",
+      "away": "Bosnien",
+      "city": "Inglewood",
+      "result": {
+        "home": 4,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.6074,
+        "p_draw": 0.2362,
+        "p_away": 0.1564
+      }
+    },
+    {
+      "match_no": 27,
+      "date": "2026-06-18",
+      "group": "B",
+      "home": "Kanada",
+      "away": "Qatar",
+      "city": "Vancouver",
+      "result": {
+        "home": 6,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.6708,
+        "p_draw": 0.2143,
+        "p_away": 0.1149
+      }
+    },
+    {
+      "match_no": 28,
+      "date": "2026-06-18",
+      "group": "A",
+      "home": "Mexiko",
+      "away": "Sydkorea",
+      "city": "Zapopan",
+      "result": {
+        "home": 1,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.5904,
+        "p_draw": 0.2413,
+        "p_away": 0.1683
+      }
+    },
+    {
+      "match_no": 29,
+      "date": "2026-06-19",
+      "group": "D",
+      "home": "USA",
+      "away": "Australien",
+      "city": "Seattle",
+      "result": {
+        "home": 2,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.4931,
+        "p_draw": 0.264,
+        "p_away": 0.2429
+      }
+    },
+    {
+      "match_no": 30,
+      "date": "2026-06-19",
+      "group": "C",
+      "home": "Skottland",
+      "away": "Marocko",
+      "city": "Foxborough",
+      "result": {
+        "home": 0,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.2018,
+        "p_draw": 0.2533,
+        "p_away": 0.5449
+      }
+    },
+    {
+      "match_no": 31,
+      "date": "2026-06-19",
+      "group": "C",
+      "home": "Brasilien",
+      "away": "Haiti",
+      "city": "Philadelphia",
+      "result": {
+        "home": 3,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.8361,
+        "p_draw": 0.1341,
+        "p_away": 0.0297
+      }
+    },
+    {
+      "match_no": 32,
+      "date": "2026-06-19",
+      "group": "D",
+      "home": "Turkiet",
+      "away": "Paraguay",
+      "city": "Santa Clara",
+      "result": {
+        "home": 0,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.4184,
+        "p_draw": 0.2736,
+        "p_away": 0.308
+      }
+    },
+    {
+      "match_no": 33,
+      "date": "2026-06-20",
+      "group": "F",
+      "home": "Nederländerna",
+      "away": "Sverige",
+      "city": "Houston",
+      "result": {
+        "home": 5,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.5762,
+        "p_draw": 0.2453,
+        "p_away": 0.1785
+      }
+    },
+    {
+      "match_no": 34,
+      "date": "2026-06-20",
+      "group": "E",
+      "home": "Tyskland",
+      "away": "Elfenbenskusten",
+      "city": "Toronto",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "pred": {
+        "p_home": 0.5903,
+        "p_draw": 0.2413,
+        "p_away": 0.1683
+      }
+    },
+    {
+      "match_no": 35,
+      "date": "2026-06-20",
+      "group": "E",
+      "home": "Ecuador",
+      "away": "Curacao",
+      "city": "Kansas City",
+      "result": {
+        "home": 0,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.6943,
+        "p_draw": 0.205,
+        "p_away": 0.1007
+      }
+    },
+    {
+      "match_no": 36,
+      "date": "2026-06-20",
+      "group": "F",
+      "home": "Tunisien",
+      "away": "Japan",
+      "city": "Guadalupe",
+      "result": {
+        "home": 0,
+        "away": 4
+      },
+      "pred": {
+        "p_home": 0.1175,
+        "p_draw": 0.2159,
+        "p_away": 0.6666
+      }
+    },
+    {
+      "match_no": 37,
+      "date": "2026-06-21",
+      "group": "H",
+      "home": "Spanien",
+      "away": "Saudiarabien",
+      "city": "Atlanta",
+      "result": {
+        "home": 4,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.8649,
+        "p_draw": 0.1163,
+        "p_away": 0.0188
+      }
+    },
+    {
+      "match_no": 38,
+      "date": "2026-06-21",
+      "group": "G",
+      "home": "Belgien",
+      "away": "Iran",
+      "city": "Inglewood",
+      "result": {
+        "home": 0,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.5685,
+        "p_draw": 0.2474,
+        "p_away": 0.1841
+      }
+    },
+    {
+      "match_no": 39,
+      "date": "2026-06-21",
+      "group": "H",
+      "home": "Uruguay",
+      "away": "Kap Verde",
+      "city": "Miami Gardens",
+      "result": {
+        "home": 2,
+        "away": 2
+      },
+      "pred": {
+        "p_home": 0.6772,
+        "p_draw": 0.2118,
+        "p_away": 0.1109
+      }
+    },
+    {
+      "match_no": 40,
+      "date": "2026-06-21",
+      "group": "G",
+      "home": "Nya Zeeland",
+      "away": "Egypten",
+      "city": "Vancouver",
+      "result": {
+        "home": 1,
+        "away": 3
+      },
+      "pred": {
+        "p_home": 0.2168,
+        "p_draw": 0.2577,
+        "p_away": 0.5255
+      }
+    },
+    {
+      "match_no": 41,
+      "date": "2026-06-22",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Österrike",
+      "city": "Arlington",
+      "result": {
+        "home": 2,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.6581,
+        "p_draw": 0.2191,
+        "p_away": 0.1228
+      }
+    },
+    {
+      "match_no": 42,
+      "date": "2026-06-22",
+      "group": "I",
+      "home": "Frankrike",
+      "away": "Irak",
+      "city": "Philadelphia",
+      "result": {
+        "home": 3,
+        "away": 0
+      },
+      "pred": {
+        "p_home": 0.8379,
+        "p_draw": 0.1331,
+        "p_away": 0.029
+      }
+    },
+    {
+      "match_no": 43,
+      "date": "2026-06-22",
+      "group": "I",
+      "home": "Norge",
+      "away": "Senegal",
+      "city": "East Rutherford",
+      "result": {
+        "home": 3,
+        "away": 2
+      },
+      "pred": {
+        "p_home": 0.4768,
+        "p_draw": 0.2667,
+        "p_away": 0.2565
+      }
+    },
+    {
+      "match_no": 44,
+      "date": "2026-06-22",
+      "group": "J",
+      "home": "Jordanien",
+      "away": "Algeriet",
+      "city": "Santa Clara",
+      "result": {
+        "home": 1,
+        "away": 2
+      },
+      "pred": {
+        "p_home": 0.2232,
+        "p_draw": 0.2594,
+        "p_away": 0.5174
+      }
+    },
+    {
+      "match_no": 45,
+      "date": "2026-06-23",
+      "group": "K",
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "city": "Houston",
+      "result": null,
+      "pred": {
+        "p_home": 0.7617,
+        "p_draw": 0.1746,
+        "p_away": 0.0637
+      }
+    },
+    {
+      "match_no": 46,
+      "date": "2026-06-23",
+      "group": "L",
+      "home": "England",
+      "away": "Ghana",
+      "city": "Foxborough",
+      "result": null,
+      "pred": {
+        "p_home": 0.8137,
+        "p_draw": 0.1472,
+        "p_away": 0.0391
+      }
+    },
+    {
+      "match_no": 47,
+      "date": "2026-06-23",
+      "group": "L",
+      "home": "Panama",
+      "away": "Kroatien",
+      "city": "Toronto",
+      "result": null,
+      "pred": {
+        "p_home": 0.1356,
+        "p_draw": 0.2261,
+        "p_away": 0.6383
+      }
+    },
+    {
+      "match_no": 48,
+      "date": "2026-06-23",
+      "group": "K",
+      "home": "Colombia",
+      "away": "DR Kongo",
+      "city": "Zapopan",
+      "result": null,
+      "pred": {
+        "p_home": 0.6329,
+        "p_draw": 0.228,
+        "p_away": 0.1391
+      }
+    },
+    {
+      "match_no": 49,
+      "date": "2026-06-24",
+      "group": "B",
+      "home": "Schweiz",
+      "away": "Kanada",
+      "city": "Vancouver",
+      "result": null
+    },
+    {
+      "match_no": 50,
+      "date": "2026-06-24",
+      "group": "B",
+      "home": "Bosnien",
+      "away": "Qatar",
+      "city": "Seattle",
+      "result": null
+    },
+    {
+      "match_no": 51,
+      "date": "2026-06-24",
+      "group": "C",
+      "home": "Skottland",
+      "away": "Brasilien",
+      "city": "Miami Gardens",
+      "result": null
+    },
+    {
+      "match_no": 52,
+      "date": "2026-06-24",
+      "group": "C",
+      "home": "Marocko",
+      "away": "Haiti",
+      "city": "Atlanta",
+      "result": null
+    },
+    {
+      "match_no": 53,
+      "date": "2026-06-24",
+      "group": "A",
+      "home": "Tjeckien",
+      "away": "Mexiko",
+      "city": "Mexico City",
+      "result": null
+    },
+    {
+      "match_no": 54,
+      "date": "2026-06-24",
+      "group": "A",
+      "home": "Sydafrika",
+      "away": "Sydkorea",
+      "city": "Guadalupe",
+      "result": null
+    },
+    {
+      "match_no": 55,
+      "date": "2026-06-25",
+      "group": "E",
+      "home": "Ecuador",
+      "away": "Tyskland",
+      "city": "East Rutherford",
+      "result": null
+    },
+    {
+      "match_no": 56,
+      "date": "2026-06-25",
+      "group": "E",
+      "home": "Curacao",
+      "away": "Elfenbenskusten",
+      "city": "Philadelphia",
+      "result": null
+    },
+    {
+      "match_no": 57,
+      "date": "2026-06-25",
+      "group": "F",
+      "home": "Japan",
+      "away": "Sverige",
+      "city": "Arlington",
+      "result": null
+    },
+    {
+      "match_no": 58,
+      "date": "2026-06-25",
+      "group": "F",
+      "home": "Tunisien",
+      "away": "Nederländerna",
+      "city": "Kansas City",
+      "result": null
+    },
+    {
+      "match_no": 59,
+      "date": "2026-06-25",
+      "group": "D",
+      "home": "Turkiet",
+      "away": "USA",
+      "city": "Inglewood",
+      "result": null
+    },
+    {
+      "match_no": 60,
+      "date": "2026-06-25",
+      "group": "D",
+      "home": "Paraguay",
+      "away": "Australien",
+      "city": "Santa Clara",
+      "result": null
+    },
+    {
+      "match_no": 61,
+      "date": "2026-06-26",
+      "group": "I",
+      "home": "Norge",
+      "away": "Frankrike",
+      "city": "Foxborough",
+      "result": null
+    },
+    {
+      "match_no": 62,
+      "date": "2026-06-26",
+      "group": "I",
+      "home": "Senegal",
+      "away": "Irak",
+      "city": "Toronto",
+      "result": null
+    },
+    {
+      "match_no": 63,
+      "date": "2026-06-26",
+      "group": "H",
+      "home": "Kap Verde",
+      "away": "Saudiarabien",
+      "city": "Houston",
+      "result": null
+    },
+    {
+      "match_no": 64,
+      "date": "2026-06-26",
+      "group": "H",
+      "home": "Uruguay",
+      "away": "Spanien",
+      "city": "Zapopan",
+      "result": null
+    },
+    {
+      "match_no": 65,
+      "date": "2026-06-26",
+      "group": "G",
+      "home": "Egypten",
+      "away": "Iran",
+      "city": "Seattle",
+      "result": null
+    },
+    {
+      "match_no": 66,
+      "date": "2026-06-26",
+      "group": "G",
+      "home": "Nya Zeeland",
+      "away": "Belgien",
+      "city": "Vancouver",
+      "result": null
+    },
+    {
+      "match_no": 67,
+      "date": "2026-06-27",
+      "group": "L",
+      "home": "Panama",
+      "away": "England",
+      "city": "East Rutherford",
+      "result": null
+    },
+    {
+      "match_no": 68,
+      "date": "2026-06-27",
+      "group": "L",
+      "home": "Kroatien",
+      "away": "Ghana",
+      "city": "Philadelphia",
+      "result": null
+    },
+    {
+      "match_no": 69,
+      "date": "2026-06-27",
+      "group": "K",
+      "home": "Colombia",
+      "away": "Portugal",
+      "city": "Miami Gardens",
+      "result": null
+    },
+    {
+      "match_no": 70,
+      "date": "2026-06-27",
+      "group": "K",
+      "home": "DR Kongo",
+      "away": "Uzbekistan",
+      "city": "Atlanta",
+      "result": null
+    },
+    {
+      "match_no": 71,
+      "date": "2026-06-27",
+      "group": "J",
+      "home": "Algeriet",
+      "away": "Österrike",
+      "city": "Kansas City",
+      "result": null
+    },
+    {
+      "match_no": 72,
+      "date": "2026-06-27",
+      "group": "J",
+      "home": "Jordanien",
+      "away": "Argentina",
+      "city": "Arlington",
+      "result": null
+    }
+  ],
+  "knockout": [
+    {
+      "match_no": 73,
+      "round": "R32",
+      "date": "2026-06-28",
+      "home": {
+        "type": "R",
+        "group": "A"
+      },
+      "away": {
+        "type": "R",
+        "group": "B"
+      },
+      "city": "Inglewood",
+      "result": null
+    },
+    {
+      "match_no": 74,
+      "round": "R32",
+      "date": "2026-06-29",
+      "home": {
+        "type": "W",
+        "group": "E"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "F"
+        ]
+      },
+      "city": "Foxborough",
+      "result": null
+    },
+    {
+      "match_no": 75,
+      "round": "R32",
+      "date": "2026-06-29",
+      "home": {
+        "type": "W",
+        "group": "F"
+      },
+      "away": {
+        "type": "R",
+        "group": "C"
+      },
+      "city": "Guadalupe",
+      "result": null
+    },
+    {
+      "match_no": 76,
+      "round": "R32",
+      "date": "2026-06-29",
+      "home": {
+        "type": "W",
+        "group": "C"
+      },
+      "away": {
+        "type": "R",
+        "group": "F"
+      },
+      "city": "Houston",
+      "result": null
+    },
+    {
+      "match_no": 77,
+      "round": "R32",
+      "date": "2026-06-30",
+      "home": {
+        "type": "W",
+        "group": "I"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "C",
+          "D",
+          "F",
+          "G",
+          "H"
+        ]
+      },
+      "city": "East Rutherford",
+      "result": null
+    },
+    {
+      "match_no": 78,
+      "round": "R32",
+      "date": "2026-06-30",
+      "home": {
+        "type": "R",
+        "group": "E"
+      },
+      "away": {
+        "type": "R",
+        "group": "I"
+      },
+      "city": "Arlington",
+      "result": null
+    },
+    {
+      "match_no": 79,
+      "round": "R32",
+      "date": "2026-06-30",
+      "home": {
+        "type": "W",
+        "group": "A"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "C",
+          "E",
+          "F",
+          "H",
+          "I"
+        ]
+      },
+      "city": "Mexico City",
+      "result": null
+    },
+    {
+      "match_no": 80,
+      "round": "R32",
+      "date": "2026-07-01",
+      "home": {
+        "type": "W",
+        "group": "L"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "E",
+          "H",
+          "I",
+          "J",
+          "K"
+        ]
+      },
+      "city": "Atlanta",
+      "result": null
+    },
+    {
+      "match_no": 81,
+      "round": "R32",
+      "date": "2026-07-01",
+      "home": {
+        "type": "W",
+        "group": "D"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "B",
+          "E",
+          "F",
+          "I",
+          "J"
+        ]
+      },
+      "city": "Santa Clara",
+      "result": null
+    },
+    {
+      "match_no": 82,
+      "round": "R32",
+      "date": "2026-07-01",
+      "home": {
+        "type": "W",
+        "group": "G"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "A",
+          "E",
+          "H",
+          "I",
+          "J"
+        ]
+      },
+      "city": "Seattle",
+      "result": null
+    },
+    {
+      "match_no": 83,
+      "round": "R32",
+      "date": "2026-07-02",
+      "home": {
+        "type": "R",
+        "group": "K"
+      },
+      "away": {
+        "type": "R",
+        "group": "L"
+      },
+      "city": "Toronto",
+      "result": null
+    },
+    {
+      "match_no": 84,
+      "round": "R32",
+      "date": "2026-07-02",
+      "home": {
+        "type": "W",
+        "group": "H"
+      },
+      "away": {
+        "type": "R",
+        "group": "J"
+      },
+      "city": "Inglewood",
+      "result": null
+    },
+    {
+      "match_no": 85,
+      "round": "R32",
+      "date": "2026-07-02",
+      "home": {
+        "type": "W",
+        "group": "B"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "E",
+          "F",
+          "G",
+          "I",
+          "J"
+        ]
+      },
+      "city": "Vancouver",
+      "result": null
+    },
+    {
+      "match_no": 86,
+      "round": "R32",
+      "date": "2026-07-03",
+      "home": {
+        "type": "W",
+        "group": "J"
+      },
+      "away": {
+        "type": "R",
+        "group": "H"
+      },
+      "city": "Miami Gardens",
+      "result": null
+    },
+    {
+      "match_no": 87,
+      "round": "R32",
+      "date": "2026-07-03",
+      "home": {
+        "type": "W",
+        "group": "K"
+      },
+      "away": {
+        "type": "3",
+        "eligible": [
+          "D",
+          "E",
+          "I",
+          "J",
+          "L"
+        ]
+      },
+      "city": "Kansas City",
+      "result": null
+    },
+    {
+      "match_no": 88,
+      "round": "R32",
+      "date": "2026-07-03",
+      "home": {
+        "type": "R",
+        "group": "D"
+      },
+      "away": {
+        "type": "R",
+        "group": "G"
+      },
+      "city": "Arlington",
+      "result": null
+    },
+    {
+      "match_no": 89,
+      "round": "R16",
+      "date": "2026-07-04",
+      "home": {
+        "type": "WM",
+        "match": 74
+      },
+      "away": {
+        "type": "WM",
+        "match": 77
+      },
+      "city": "Philadelphia",
+      "result": null
+    },
+    {
+      "match_no": 90,
+      "round": "R16",
+      "date": "2026-07-04",
+      "home": {
+        "type": "WM",
+        "match": 73
+      },
+      "away": {
+        "type": "WM",
+        "match": 75
+      },
+      "city": "Houston",
+      "result": null
+    },
+    {
+      "match_no": 91,
+      "round": "R16",
+      "date": "2026-07-05",
+      "home": {
+        "type": "WM",
+        "match": 76
+      },
+      "away": {
+        "type": "WM",
+        "match": 78
+      },
+      "city": "East Rutherford",
+      "result": null
+    },
+    {
+      "match_no": 92,
+      "round": "R16",
+      "date": "2026-07-05",
+      "home": {
+        "type": "WM",
+        "match": 79
+      },
+      "away": {
+        "type": "WM",
+        "match": 80
+      },
+      "city": "Mexico City",
+      "result": null
+    },
+    {
+      "match_no": 93,
+      "round": "R16",
+      "date": "2026-07-06",
+      "home": {
+        "type": "WM",
+        "match": 83
+      },
+      "away": {
+        "type": "WM",
+        "match": 84
+      },
+      "city": "Arlington",
+      "result": null
+    },
+    {
+      "match_no": 94,
+      "round": "R16",
+      "date": "2026-07-06",
+      "home": {
+        "type": "WM",
+        "match": 81
+      },
+      "away": {
+        "type": "WM",
+        "match": 82
+      },
+      "city": "Seattle",
+      "result": null
+    },
+    {
+      "match_no": 95,
+      "round": "R16",
+      "date": "2026-07-07",
+      "home": {
+        "type": "WM",
+        "match": 86
+      },
+      "away": {
+        "type": "WM",
+        "match": 88
+      },
+      "city": "Atlanta",
+      "result": null
+    },
+    {
+      "match_no": 96,
+      "round": "R16",
+      "date": "2026-07-07",
+      "home": {
+        "type": "WM",
+        "match": 85
+      },
+      "away": {
+        "type": "WM",
+        "match": 87
+      },
+      "city": "Vancouver",
+      "result": null
+    },
+    {
+      "match_no": 97,
+      "round": "QF",
+      "date": "2026-07-09",
+      "home": {
+        "type": "WM",
+        "match": 89
+      },
+      "away": {
+        "type": "WM",
+        "match": 90
+      },
+      "city": "Foxborough",
+      "result": null
+    },
+    {
+      "match_no": 98,
+      "round": "QF",
+      "date": "2026-07-10",
+      "home": {
+        "type": "WM",
+        "match": 93
+      },
+      "away": {
+        "type": "WM",
+        "match": 94
+      },
+      "city": "Inglewood",
+      "result": null
+    },
+    {
+      "match_no": 99,
+      "round": "QF",
+      "date": "2026-07-11",
+      "home": {
+        "type": "WM",
+        "match": 91
+      },
+      "away": {
+        "type": "WM",
+        "match": 92
+      },
+      "city": "Miami Gardens",
+      "result": null
+    },
+    {
+      "match_no": 100,
+      "round": "QF",
+      "date": "2026-07-11",
+      "home": {
+        "type": "WM",
+        "match": 95
+      },
+      "away": {
+        "type": "WM",
+        "match": 96
+      },
+      "city": "Kansas City",
+      "result": null
+    },
+    {
+      "match_no": 101,
+      "round": "SF",
+      "date": "2026-07-14",
+      "home": {
+        "type": "WM",
+        "match": 97
+      },
+      "away": {
+        "type": "WM",
+        "match": 98
+      },
+      "city": "Arlington",
+      "result": null
+    },
+    {
+      "match_no": 102,
+      "round": "SF",
+      "date": "2026-07-15",
+      "home": {
+        "type": "WM",
+        "match": 99
+      },
+      "away": {
+        "type": "WM",
+        "match": 100
+      },
+      "city": "Atlanta",
+      "result": null
+    },
+    {
+      "match_no": 103,
+      "round": "3rd",
+      "date": "2026-07-18",
+      "home": {
+        "type": "LM",
+        "match": 101
+      },
+      "away": {
+        "type": "LM",
+        "match": 102
+      },
+      "city": "Miami Gardens",
+      "result": null
+    },
+    {
+      "match_no": 104,
+      "round": "Final",
+      "date": "2026-07-19",
+      "home": {
+        "type": "WM",
+        "match": 101
+      },
+      "away": {
+        "type": "WM",
+        "match": 102
+      },
+      "city": "East Rutherford",
+      "result": null
+    }
+  ],
+  "ko_results": []
+}

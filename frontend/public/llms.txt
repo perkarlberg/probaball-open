@@ -1,0 +1,29 @@
+# Probaball
+
+> Probaball is a free data-science simulation of the 2026 FIFA World Cup. It plays the whole tournament out tens of thousands of times (Monte Carlo) and reports each team's probability of winning the World Cup, reaching each knockout round, and finishing in each group position.
+
+Site: https://probaball.online/ (primary language: Swedish; international visitors are served English, plus Spanish, Portuguese, French and German).
+
+## How the model works
+
+Each team's strength is a weighted blend of three independent signals:
+- Rankings (weight 40%): a World-Football Elo rating computed walk-forward over ~50,000 historical international matches. The FIFA World Ranking enters only as a small anchor — in out-of-sample tests it added nothing beyond Elo.
+- Bookmaker title odds (weight 40%): de-vigged, from a mix of international sportsbooks and a prediction market — bet365, DraftKings, FanDuel, BetMGM and Kalshi (late May / early June 2026).
+- Expert predictions (weight 20%): from 30+ named pundits and statistical models across many countries (e.g. the ESPN panel, Gary Lineker, Jamie Carragher, Thierry Henry, Lothar Matthäus, Hugo Sánchez, El Hadji Diouf, the Opta supercomputer).
+
+Matches use a bivariate-Poisson goal model with a Dixon-Coles low-score correction, a host-nation edge (USA, Mexico, Canada) in the group stage, and penalty shootouts in the official knockout bracket. The canonical run is 50,000 simulated tournaments; visitors can adjust parameters and force the outcome of specific matchups ("conviction games") and re-run their own simulation.
+
+Every modelling choice is validated out-of-sample on historical tournaments using the Ranked Probability Score (RPS); anything that does not improve calibration is dropped (the FIFA ranking and a Maher/Dixon-Coles attack-defence style model were both tested and cut).
+
+## Key facts
+
+- Tournament: 2026 FIFA World Cup, 48 teams, hosts USA / Mexico / Canada, 11 June – 19 July 2026.
+- Probaball is an independent project and is not affiliated with or endorsed by FIFA.
+- Inputs combine team rankings (Elo-led), de-vigged bookmaker odds and expert predictions, weighted 40/40/20.
+- These are probabilities, not predictions: even a clear favourite usually sits under 20% to win the whole tournament.
+
+## Pages
+
+- [Home / full standings](https://probaball.online/): title probabilities for all 48 teams, group-stage odds, and a representative knockout bracket.
+- Per-team pages at `/lag/<team>/`: each team's chance to win the World Cup, reach the final / semi / round of 16, and its group-stage placement odds.
+- Per-group pages at `/grupp/<a-l>/`: qualification probabilities for each team plus the most likely win/draw/loss outcome of every group match.

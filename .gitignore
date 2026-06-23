@@ -1,0 +1,9 @@
+.secrets/
+**/.venv/
+**/__pycache__/
+**/.localdb/
+frontend/node_modules/
+frontend/dist/
+frontend/.env.production
+.firebase/
+.publish/

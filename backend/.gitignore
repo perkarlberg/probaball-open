@@ -1,0 +1,8 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.localdb/
+
+# backtest data (fetch via: python3 -m backtest.fetch_data)
+backtest/data/
