@@ -842,7 +842,10 @@
       "home": "Portugal",
       "away": "Uzbekistan",
       "city": "Houston",
-      "result": null,
+      "result": {
+        "home": 5,
+        "away": 0
+      },
       "pred": {
         "p_home": 0.7617,
         "p_draw": 0.1746,
@@ -856,7 +859,10 @@
       "home": "England",
       "away": "Ghana",
       "city": "Foxborough",
-      "result": null,
+      "result": {
+        "home": 0,
+        "away": 0
+      },
       "pred": {
         "p_home": 0.8137,
         "p_draw": 0.1472,
@@ -870,7 +876,10 @@
       "home": "Panama",
       "away": "Kroatien",
       "city": "Toronto",
-      "result": null,
+      "result": {
+        "home": 0,
+        "away": 1
+      },
       "pred": {
         "p_home": 0.1356,
         "p_draw": 0.2261,
@@ -884,7 +893,10 @@
       "home": "Colombia",
       "away": "DR Kongo",
       "city": "Zapopan",
-      "result": null,
+      "result": {
+        "home": 1,
+        "away": 0
+      },
       "pred": {
         "p_home": 0.6329,
         "p_draw": 0.228,
@@ -898,7 +910,12 @@
       "home": "Schweiz",
       "away": "Kanada",
       "city": "Vancouver",
-      "result": null
+      "result": null,
+      "pred": {
+        "p_home": 0.3727,
+        "p_draw": 0.2758,
+        "p_away": 0.3515
+      }
     },
     {
       "match_no": 50,
@@ -907,7 +924,12 @@
       "home": "Bosnien",
       "away": "Qatar",
       "city": "Seattle",
-      "result": null
+      "result": null,
+      "pred": {
+        "p_home": 0.4909,
+        "p_draw": 0.2644,
+        "p_away": 0.2447
+      }
     },
     {
       "match_no": 51,
@@ -916,7 +938,12 @@
       "home": "Skottland",
       "away": "Brasilien",
       "city": "Miami Gardens",
-      "result": null
+      "result": null,
+      "pred": {
+        "p_home": 0.1432,
+        "p_draw": 0.23,
+        "p_away": 0.6268
+      }
     },
     {
       "match_no": 52,
@@ -925,7 +952,12 @@
       "home": "Marocko",
       "away": "Haiti",
       "city": "Atlanta",
-      "result": null
+      "result": null,
+      "pred": {
+        "p_home": 0.7975,
+        "p_draw": 0.1561,
+        "p_away": 0.0464
+      }
     },
     {
       "match_no": 53,
@@ -934,7 +966,12 @@
       "home": "Tjeckien",
       "away": "Mexiko",
       "city": "Mexico City",
-      "result": null
+      "result": null,
+      "pred": {
+        "p_home": 0.119,
+        "p_draw": 0.2168,
+        "p_away": 0.6642
+      }
     },
     {
       "match_no": 54,
@@ -943,7 +980,12 @@
       "home": "Sydafrika",
       "away": "Sydkorea",
       "city": "Guadalupe",
-      "result": null
+      "result": null,
+      "pred": {
+        "p_home": 0.1654,
+        "p_draw": 0.2402,
+        "p_away": 0.5944
+      }
     },
     {
       "match_no": 55,
