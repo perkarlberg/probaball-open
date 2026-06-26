@@ -39,4 +39,9 @@ echo "==> Deploying (backend image + reseed canonical + frontend)"
 cd "$ROOT"
 ./deploy.sh all
 
+# Log the day's tournament-stage forecast (+ book title prob) for the live
+# model-vs-market scorecard. Reads the freshly-deployed canonical. Non-fatal.
+echo "==> Logging tournament-forecast scorecard row"
+python3 "$ROOT/backend/log_scorecard.py" || echo "   (scorecard log skipped; non-fatal)"
+
 echo "==> [$(date -u +%FT%TZ)] Daily update complete."
