@@ -1216,7 +1216,10 @@
       "home": "Panama",
       "away": "England",
       "city": "East Rutherford",
-      "result": null,
+      "result": {
+        "home": 0,
+        "away": 2
+      },
       "pred": {
         "p_home": 0.0428,
         "p_draw": 0.1517,
@@ -1230,7 +1233,10 @@
       "home": "Kroatien",
       "away": "Ghana",
       "city": "Philadelphia",
-      "result": null,
+      "result": {
+        "home": 2,
+        "away": 1
+      },
       "pred": {
         "p_home": 0.5891,
         "p_draw": 0.2417,
@@ -1244,7 +1250,10 @@
       "home": "Colombia",
       "away": "Portugal",
       "city": "Miami Gardens",
-      "result": null,
+      "result": {
+        "home": 0,
+        "away": 0
+      },
       "pred": {
         "p_home": 0.3044,
         "p_draw": 0.2733,
@@ -1258,7 +1267,10 @@
       "home": "DR Kongo",
       "away": "Uzbekistan",
       "city": "Atlanta",
-      "result": null,
+      "result": {
+        "home": 3,
+        "away": 1
+      },
       "pred": {
         "p_home": 0.4558,
         "p_draw": 0.2697,
@@ -1272,7 +1284,10 @@
       "home": "Algeriet",
       "away": "Österrike",
       "city": "Kansas City",
-      "result": null,
+      "result": {
+        "home": 3,
+        "away": 3
+      },
       "pred": {
         "p_home": 0.2853,
         "p_draw": 0.2712,
@@ -1286,7 +1301,10 @@
       "home": "Jordanien",
       "away": "Argentina",
       "city": "Arlington",
-      "result": null,
+      "result": {
+        "home": 1,
+        "away": 3
+      },
       "pred": {
         "p_home": 0.0114,
         "p_draw": 0.0981,
