@@ -7,9 +7,9 @@ Site: https://probaball.online/ (primary language: Swedish; international visito
 ## How the model works
 
 Each team's strength is a weighted blend of three independent signals:
-- Rankings (weight 40%): a World-Football Elo rating computed walk-forward over ~50,000 historical international matches. The FIFA World Ranking enters only as a small anchor — in out-of-sample tests it added nothing beyond Elo.
-- Bookmaker title odds (weight 40%): de-vigged, from a mix of international sportsbooks and a prediction market — bet365, DraftKings, FanDuel, BetMGM and Kalshi (late May / early June 2026).
-- Expert predictions (weight 20%): from 30+ named pundits and statistical models across many countries (e.g. the ESPN panel, Gary Lineker, Jamie Carragher, Thierry Henry, Lothar Matthäus, Hugo Sánchez, El Hadji Diouf, the Opta supercomputer).
+- Rankings (weight 47.5%): a World-Football Elo rating computed walk-forward over ~50,000 historical international matches. (The FIFA World Ranking was tested and dropped — in out-of-sample tests it added nothing beyond Elo.)
+- Bookmaker title odds (weight 47.5%): de-vigged, from a mix of international sportsbooks and a prediction market — bet365, DraftKings, FanDuel, BetMGM and Kalshi (late May / early June 2026).
+- Expert predictions (weight 5%): from 30+ named pundits and statistical models across many countries (e.g. the ESPN panel, Gary Lineker, Jamie Carragher, Thierry Henry, Lothar Matthäus, Hugo Sánchez, El Hadji Diouf, the Opta supercomputer).
 
 Matches use a bivariate-Poisson goal model with a Dixon-Coles low-score correction, a host-nation edge (USA, Mexico, Canada) in the group stage, and penalty shootouts in the official knockout bracket. The canonical run is 50,000 simulated tournaments; visitors can adjust parameters and force the outcome of specific matchups ("conviction games") and re-run their own simulation.
 
@@ -19,7 +19,7 @@ Every modelling choice is validated out-of-sample on historical tournaments usin
 
 - Tournament: 2026 FIFA World Cup, 48 teams, hosts USA / Mexico / Canada, 11 June – 19 July 2026.
 - Probaball is an independent project and is not affiliated with or endorsed by FIFA.
-- Inputs combine team rankings (Elo-led), de-vigged bookmaker odds and expert predictions, weighted 40/40/20.
+- Inputs combine a team Elo rating, de-vigged bookmaker odds and expert predictions, weighted 47.5/47.5/5, blended on a common strength scale (magnitudes preserved, not just ranks).
 - These are probabilities, not predictions: even a clear favourite usually sits under 20% to win the whole tournament.
 
 ## Pages

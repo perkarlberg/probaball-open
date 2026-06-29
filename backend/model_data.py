@@ -41,9 +41,13 @@ except Exception:  # pragma: no cover
 # robustness anchor.
 RANK_W = (0.85, 0.15)  # (Elo, FIFA)
 
-# Overall blend weights (rankings, bookmaker, expert). Markets are the strongest
-# single predictor; rankings broad/objective; experts thinner. (Spec §2.1.)
-BLEND_W = (0.40, 0.40, 0.20)
+# Overall blend weights (rankings=Elo, bookmaker, expert). Elo and the market
+# carry the forecast (equal); experts get a light 5% — enough to nudge the order
+# (a human-judgment voice) without overriding the two harder, sharper signals.
+# At 20% the sparse pre-tournament expert picks overrode Elo+market and flipped
+# the favourite; 5% lets them count without dictating. Not match-RPS-tunable
+# (no historical odds/picks) — set by intent + the live in-tournament grading.
+BLEND_W = (0.475, 0.475, 0.05)
 
 # Engine uses Swedish team names; research returns English. Map EN -> SV.
 NAME_EN_SV = {
@@ -229,23 +233,43 @@ def american_to_prob(odds: int) -> float:
     return 100.0 / (odds + 100.0)
 
 
+def _devig_shin(raw: dict[str, float]) -> dict[str, float]:
+    """Shin (1992) de-vig: solve z so the implied probs sum to 1. Unlike plain
+    normalisation it corrects the favourite-longshot bias (shifts mass toward
+    favourites), which matters in a long-tailed many-runner title market."""
+    teams = list(raw)
+    r = [raw[t] for t in teams]
+    V = sum(r)
+    if V <= 0:
+        return {}
+
+    def psum(z):
+        return sum((math.sqrt(z * z + 4 * (1 - z) * ri * ri / V) - z) / (2 * (1 - z))
+                   for ri in r)
+    lo, hi = 0.0, 0.95
+    for _ in range(80):                # sum p decreases as z rises -> bisect
+        mid = (lo + hi) / 2
+        if psum(mid) > 1:
+            lo = mid
+        else:
+            hi = mid
+    z = (lo + hi) / 2
+    return {t: (math.sqrt(z * z + 4 * (1 - z) * ri * ri / V) - z) / (2 * (1 - z))
+            for t, ri in zip(teams, r)}
+
+
 def bookmaker_probs() -> dict[str, float]:
-    """De-vigged average implied title probability per team (SV keys)."""
+    """De-vigged (Shin's method) implied title probability per team (SV keys)."""
     if not BOOKMAKER_ODDS:
         return {}
-    # Average raw implied prob across books per team.
     raw: dict[str, float] = {}
     for team_en, bybook in BOOKMAKER_ODDS.items():
         sv = to_sv(team_en)
         if sv is None or not bybook:
             continue
         probs = [american_to_prob(o) for o in bybook.values()]
-        raw[sv] = sum(probs) / len(probs)
-    # Remove the overround so probabilities sum to 1 across covered teams.
-    total = sum(raw.values())
-    if total <= 0:
-        return {}
-    return {t: p / total for t, p in raw.items()}
+        raw[sv] = sum(probs) / len(probs)   # avg raw implied prob across books
+    return _devig_shin(raw)
 
 
 def expert_probs() -> dict[str, float]:
@@ -276,32 +300,82 @@ def _rank_onto_fifa(order: list[str], ladder: list[float]) -> dict[str, float]:
     return {team: ladder[i] for i, team in enumerate(order)}
 
 
+def _zscore(d: dict[str, float]) -> dict[str, float]:
+    """Standardize values to mean 0, sd 1 (sd=1 if degenerate)."""
+    vals = list(d.values())
+    if not vals:
+        return {}
+    m = sum(vals) / len(vals)
+    sd = (sum((v - m) ** 2 for v in vals) / len(vals)) ** 0.5 or 1.0
+    return {k: (v - m) / sd for k, v in d.items()}
+
+
 def blended_ratings(fifa_rating: dict[str, int],
                     weights=BLEND_W) -> dict[str, float]:
-    """
-    Effective rating per team = weighted average of three buckets, each mapped
-    onto the FIFA rating scale via rank/quantile matching:
-      * rankings - Elo (primary) blended with FIFA points (RANK_W),
-      * book     - teams ranked by de-vigged bookmaker title probability,
-      * expert   - teams ranked by aggregated expert pick weight.
-    ``weights`` is (rankings, book, expert). Quantile matching keeps every
-    component on the same scale (no log/zero or pool-size artefacts).
+    """Effective rating per team: a weighted average of STANDARDIZED signals on
+    the log-odds (rating) scale, rescaled to the FIFA-points spread so the goal
+    model needs no recalibration. ``weights`` is (rankings, book, expert).
+
+      * rankings - pure Elo. (FIFA dropped: M6 and the blend_grid backtest show
+                   it adds ~0 RPS; reintroduce only as an explicit weighted leg.)
+      * book     - de-vigged (Shin) bookmaker title prob -> logit.
+      * expert   - aggregated expert pick weight -> logit.
+
+    Each signal is z-scored across the field, then teams are blended over the
+    signals they actually have (weights renormalized). MAGNITUDE IS PRESERVED:
+    no rank ladder, so a clear #1 stays clearly ahead of a close #2. Z-scoring
+    logit(title-odds) also cancels the knockout "compression" (logit(title) ~
+    k*strength), so no de-compression constant is needed. The composite is
+    mapped to the FIFA mean/sd, keeping the title-odds concentration the goal
+    model was calibrated to while fixing the within-field spacing.
     """
     teams = list(fifa_rating)
-    # Quantile-match onto the FIFA-points ladder: keeps effective ratings on the
-    # scale the goal model is calibrated to (title odds ~ market). Elo enters
-    # via the rankings bucket below, not by rescaling the whole ladder (that
-    # over-concentrates the title distribution).
-    ladder = sorted((float(r) for r in fifa_rating.values()), reverse=True)
+    ladder = [float(r) for r in fifa_rating.values()]
+    lmean = sum(ladder) / len(ladder)
+    lsd = (sum((x - lmean) ** 2 for x in ladder) / len(ladder)) ** 0.5 or 1.0
+    w_rank, w_book, w_exp = weights
+
+    # rankings leg = pure Elo (fall back to FIFA points only if no Elo data)
+    if ELO_RATING and all(t in ELO_RATING for t in teams):
+        z_rank = _zscore({t: float(ELO_RATING[t]) for t in teams})
+    else:
+        z_rank = _zscore({t: float(fifa_rating[t]) for t in teams})
 
     bp = bookmaker_probs()
+    z_book = _zscore({t: math.log(bp[t] / (1 - bp[t]))
+                      for t in teams if 0 < bp.get(t, 0) < 1})
+    # Experts are sparse: being named is positive evidence, absence is neutral.
+    # z-score the raw pick weight over the WHOLE field (unnamed = 0) so a
+    # named-but-low team isn't pushed BELOW unnamed teams (which a logit over
+    # only-named teams perversely did).
     ep = expert_probs()
+    z_exp = _zscore({t: ep.get(t, 0.0) for t in teams})
 
-    # Order teams best->worst for each signal. Ties fall back to the next signal.
+    # weighted log-pool over the signals each team has (renormalized)
+    comp = {}
+    for t in teams:
+        num, den = w_rank * z_rank[t], w_rank
+        if t in z_book:
+            num += w_book * z_book[t]; den += w_book
+        if t in z_exp:
+            num += w_exp * z_exp[t]; den += w_exp
+        comp[t] = num / den
+
+    # rescale composite to the FIFA-points spread (preserves goal-model scale)
+    z = _zscore(comp)
+    return {t: lmean + lsd * z[t] for t in teams}
+
+
+def _blended_ratings_ladder(fifa_rating: dict[str, int],
+                            weights=BLEND_W) -> dict[str, float]:
+    """OLD rank-ladder blend, kept for A/B comparison only (do not ship). Maps
+    each signal's rank onto the FIFA-points ladder, discarding magnitude."""
+    teams = list(fifa_rating)
+    ladder = sorted((float(r) for r in fifa_rating.values()), reverse=True)
+    bp = bookmaker_probs()
+    ep = expert_probs()
     fifa_order = sorted(teams, key=lambda t: fifa_rating[t], reverse=True)
     r_fifa = _rank_onto_fifa(fifa_order, ladder)
-
-    # Rankings bucket: Elo (primary) + FIFA. Falls back to FIFA if no Elo data.
     if ELO_RATING and all(t in ELO_RATING for t in teams):
         w_elo, w_fifa = RANK_W
         elo_order = sorted(teams, key=lambda t: (ELO_RATING[t], fifa_rating[t]),
@@ -311,14 +385,12 @@ def blended_ratings(fifa_rating: dict[str, int],
                   for t in teams}
     else:
         r_rank = r_fifa
-
     book_order = sorted(teams, key=lambda t: (bp.get(t, 0.0), fifa_rating[t]),
                         reverse=True)
     exp_order = sorted(teams, key=lambda t: (ep.get(t, 0.0), bp.get(t, 0.0),
                                              fifa_rating[t]), reverse=True)
     r_book = _rank_onto_fifa(book_order, ladder)
     r_exp = _rank_onto_fifa(exp_order, ladder)
-
     wr, wb, we = weights
     wsum = wr + wb + we
     return {t: (wr * r_rank[t] + wb * r_book[t] + we * r_exp[t]) / wsum
@@ -404,7 +476,7 @@ def model_meta() -> dict:
     """Summary of the external data driving the blend (for the UI footer)."""
     books = sorted({b for by in BOOKMAKER_ODDS.values() for b in by})
     return {
-        "weights": {"fifa": 1 / 3, "bookmaker": 1 / 3, "expert": 1 / 3},
+        "weights": {"rankings": 0.475, "bookmaker": 0.475, "expert": 0.05},
         "books": books,
         "num_experts": len(EXPERT_PICKS),
         "experts": [{"name": p["name"], "outlet": p.get("outlet"),
