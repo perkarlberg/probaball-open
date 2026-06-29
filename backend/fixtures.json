@@ -1842,5 +1842,14 @@
       "result": null
     }
   ],
-  "ko_results": []
+  "ko_results": [
+    {
+      "date": "2026-06-28",
+      "home_team": "Sydafrika",
+      "away_team": "Kanada",
+      "home": 0,
+      "away": 1,
+      "winner": "Kanada"
+    }
+  ]
 }
