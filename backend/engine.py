@@ -398,13 +398,34 @@ _THIRD_ELIGIBLE = {
 }
 
 
+# FIFA's official third-place allocation is a fixed lookup keyed by WHICH eight
+# groups' thirds qualify — per-slot eligibility (_THIRD_ELIGIBLE) alone does NOT
+# determine it, because several valid matchings can satisfy the constraints while
+# FIFA's table picks one specific assignment. Pinned for the sets we actually
+# need (verified against the published bracket); falls back to eligibility
+# backtracking for any other set (e.g. pre-tournament sims over many combos).
+# Key = frozenset of qualifying groups; value = {slot-winner-group: third-group}.
+_THIRD_ALLOCATION = {
+    # 2026 actual R32 (thirds from B,D,E,F,I,J,K,L). Verified vs Wikipedia/CBS/Yahoo:
+    # France(WI)-Sweden(3F), Germany(WE)-Paraguay(3D), Mexico(WA)-Ecuador(3E),
+    # Belgium(WG)-Senegal(3I), USA(WD)-Bosnia(3B), England(WL)-DRCongo(3K),
+    # Switzerland(WB)-Algeria(3J), Colombia(WK)-Ghana(3L).
+    frozenset("BDEFIJKL"): {"E": "D", "I": "F", "A": "E", "L": "K",
+                            "D": "B", "G": "I", "B": "J", "K": "L"},
+}
+
+
 def _assign_thirds(slot_groups, qualified):
-    """Match the 8 qualifying thirds to the third-place slots per FIFA's official
-    R32 eligibility (a slot labelled by the group winner it sits opposite may only
-    take a third from _THIRD_ELIGIBLE[label]). Backtracking finds a valid matching
-    — one always exists for any 8-of-12 set by the table's construction. Falls
-    back to the looser "avoid own-group winner" rule if (impossibly) none does.
-    qualified: [(group, team)] -> {slot_label: team}."""
+    """Match the 8 qualifying thirds to the third-place slots. Uses FIFA's pinned
+    official allocation when the qualifying set is known; otherwise backtracks
+    over _THIRD_ELIGIBLE (a slot labelled by the group winner it sits opposite may
+    only take a third from _THIRD_ELIGIBLE[label]). qualified: [(group, team)] ->
+    {slot_label: team}."""
+    g2t = {g: team for g, team in qualified}
+    alloc = _THIRD_ALLOCATION.get(frozenset(g2t))
+    if alloc and all(tg in g2t for tg in alloc.values()):
+        return {slot: g2t[tg] for slot, tg in alloc.items()}
+
     def match(eligible_fn):
         used = [False] * len(qualified)
         res = {}
@@ -482,10 +503,9 @@ def run_simulation(n: int = 1000, params: Params | None = None,
     # group -> team -> [P(1st), P(2nd), P(3rd), P(4th)] counts
     group_pos = {g: {t: [0, 0, 0, 0] for t in GROUPS[g]} for g in GROUPS}
 
-    # Per-team opponent tally for the next two knockout rounds (R32, R16), so we
-    # can project each team's most-likely upcoming KO opponent. Conditioned on
-    # the team reaching that round.
-    opp = {"R32": {}, "R16": {}}
+    # Per-team opponent tally for every knockout round, so we can project each
+    # team's path. Conditioned on the team reaching that round.
+    opp = {r: {} for r in ROUND_NAMES}
 
     for _ in range(n):
         bracket, positions = _qualify(p, forced, cond)
@@ -506,15 +526,38 @@ def run_simulation(n: int = 1000, params: Params | None = None,
                      for i in range(0, len(teams), 2)]
         progress["Mästare"][teams[0]] += 1
 
-    def modal_opp(team, rnd):
-        """Most-likely opponent in `rnd` given the team reaches it, + that share."""
-        c = opp[rnd].get(team)
-        if not c:
-            return None
-        name = max(c, key=c.get)
-        return {"round": rnd, "opp": name,
-                "opp_name_en": TEAM_SIGNALS.get(name, {}).get("name_en"),
-                "p": round(c[name] / sum(c.values()), 3)}
+    # Matchups already played (group + recorded KO), as frozensets, so a team's
+    # already-contested round isn't re-shown as an upcoming game.
+    played = ((set(cond.get("results", {})) | set(cond.get("advanced", {})))
+              if cond else set())
+
+    def ko_path(team):
+        """The team's path from its next game to the final: each round it is >50%
+        to REACH. A round whose opponent is already determined (share==1, e.g. the
+        R32 once groups are done) carries a W/D/L prediction; later rounds stay
+        projected (most-likely opponent + the odds of facing them)."""
+        out = []
+        for rnd in ROUND_NAMES:
+            reach = progress[rnd][team] / n
+            c = opp[rnd].get(team)
+            if reach <= 0.5 or not c:
+                continue
+            name = max(c, key=c.get)
+            if frozenset((team, name)) in played:
+                continue  # they have already played this round
+            g = {"round": rnd, "opp": name,
+                 "opp_name_en": TEAM_SIGNALS.get(name, {}).get("name_en"),
+                 "reach": round(reach, 3),
+                 "opp_share": round(c[name] / sum(c.values()), 3),
+                 "known": c[name] == sum(c.values())}
+            if g["known"]:    # opponent fixed -> show the match prediction
+                ha = p.ko_host_adv if team in HOSTS else 0
+                hb = p.ko_host_adv if name in HOSTS else 0
+                la, lb = expected_lambdas(TEAM_RATING[team], TEAM_RATING[name], p, ha, hb)
+                _, pw, pdr, pl = _match_outcome(la, lb, p.rho)
+                g["p_win"], g["p_draw"], g["p_loss"] = round(pw, 3), round(pdr, 3), round(pl, 3)
+            out.append(g)
+        return out
 
     # Per-team stage probabilities + external signals, sorted by title prob.
     team_rows = []
@@ -542,7 +585,7 @@ def run_simulation(n: int = 1000, params: Params | None = None,
             "semi": progress["Semifinal"][t] / n,
             "quarter": progress["Kvartsfinal"][t] / n,
             "r16": progress["R16"][t] / n,
-            "next_ko": [o for o in (modal_opp(t, "R32"), modal_opp(t, "R16")) if o],
+            "next_ko": ko_path(t),
         })
     team_rows.sort(key=lambda r: (r["champion"], r["final"], r["rating"]), reverse=True)
 

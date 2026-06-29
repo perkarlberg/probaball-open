@@ -324,13 +324,6 @@ export default function App() {
         />
       </section>
 
-      <section>
-        <h2>{t("sec_groups")}</h2>
-        <p className="muted small">{t("hint_group")}</p>
-        <Groups groups={result.groups} onGroupClick={openGroup} />
-        <p className="muted small">{t("groups_legend")}</p>
-      </section>
-
       <section className="bracket-section">
         <div className="section-head">
           <h2>{t("sec_bracket")}</h2>
@@ -358,6 +351,13 @@ export default function App() {
           forced={forced}
           setForced={setForced}
         />
+      </section>
+
+      <section>
+        <h2>{t("sec_groups")}</h2>
+        <p className="muted small">{t("hint_group")}</p>
+        <Groups groups={result.groups} onGroupClick={openGroup} />
+        <p className="muted small">{t("groups_legend")}</p>
       </section>
 
       <FAQ teams={result.teams} model={model} />

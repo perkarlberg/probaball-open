@@ -100,15 +100,21 @@ export default function TeamModal({ team, groupRow, matches, history, onMatchCli
                 </li>
               );
             })}
-            {(team.next_ko || []).map((k) => (
-              <li key={k.round}>
-                <span className="tm-match tm-match-proj">
-                  <span className="tm-match-date">{t(k.round === "R32" ? "tm_rnd_r32" : "tm_rnd_r16")}</span>
-                  <span className="tm-match-opp"><Flag team={k.opp} />{tn(k.opp)}</span>
-                  <span className="tm-match-pred">{t("tm_ko_note", { pct: (k.p * 100).toFixed(0) + "%" })}</span>
-                </span>
-              </li>
-            ))}
+            {(team.next_ko || []).map((k) => {
+              const lbl = { R32: "tm_rnd_r32", R16: "tm_rnd_r16", Kvartsfinal: "tm_rnd_quarter",
+                            Semifinal: "tm_rnd_semi", Final: "tm_rnd_final" }[k.round] || "tm_rnd_r16";
+              return (
+                <li key={k.round}>
+                  <span className={"tm-match" + (k.known ? "" : " tm-match-proj")}>
+                    <span className="tm-match-date">{t(lbl)}</span>
+                    <span className="tm-match-opp"><Flag team={k.opp} />{tn(k.opp)}</span>
+                    {k.known
+                      ? <span className="tm-match-pred">{t("tm_pred", { pct: (k.p_win * 100).toFixed(0) + "%" })}</span>
+                      : <span className="tm-match-pred">{t("tm_ko_note", { pct: (k.opp_share * 100).toFixed(0) + "%" })}</span>}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </>
       )}
