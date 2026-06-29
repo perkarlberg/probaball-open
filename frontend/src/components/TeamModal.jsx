@@ -103,14 +103,31 @@ export default function TeamModal({ team, groupRow, matches, history, onMatchCli
             {(team.next_ko || []).map((k) => {
               const lbl = { R32: "tm_rnd_r32", R16: "tm_rnd_r16", Kvartsfinal: "tm_rnd_quarter",
                             Semifinal: "tm_rnd_semi", Final: "tm_rnd_final" }[k.round] || "tm_rnd_r16";
+              const p0 = (v) => (v * 100).toFixed(0) + "%";
+              if (k.known) {
+                // Both teams' chance to ADVANCE, split into a 90' win vs winning
+                // a level tie in extra time / penalties (no draw outcome in a KO).
+                const side = (lblText, flagTeam, adv, reg, et) => (
+                  <span className="tm-match" key={flagTeam}>
+                    <span className="tm-match-date">{lblText}</span>
+                    <span className="tm-match-opp"><Flag team={flagTeam} />{tn(flagTeam)}</span>
+                    <span className="tm-match-score">{p0(adv)}</span>
+                    <span className="tm-match-pred">{t("tm_ko_split", { reg: p0(reg), et: p0(et) })}</span>
+                  </span>
+                );
+                return (
+                  <li key={k.round} className="tm-ko-known">
+                    {side(t(lbl), team.team, k.advance, k.reg, k.et)}
+                    {side("", k.opp, k.opp_advance, k.opp_reg, k.opp_et)}
+                  </li>
+                );
+              }
               return (
                 <li key={k.round}>
-                  <span className={"tm-match" + (k.known ? "" : " tm-match-proj")}>
+                  <span className="tm-match tm-match-proj">
                     <span className="tm-match-date">{t(lbl)}</span>
                     <span className="tm-match-opp"><Flag team={k.opp} />{tn(k.opp)}</span>
-                    {k.known
-                      ? <span className="tm-match-pred">{t("tm_ko_adv", { pct: (k.advance * 100).toFixed(0) + "%" })}</span>
-                      : <span className="tm-match-pred">{t("tm_ko_note", { pct: (k.opp_share * 100).toFixed(0) + "%" })}</span>}
+                    <span className="tm-match-pred">{t("tm_ko_note", { pct: p0(k.opp_share) })}</span>
                   </span>
                 </li>
               );

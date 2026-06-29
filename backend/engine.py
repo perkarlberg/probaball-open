@@ -537,7 +537,7 @@ def run_simulation(n: int = 1000, params: Params | None = None,
         R32 once groups are done) carries a W/D/L prediction; later rounds stay
         projected (most-likely opponent + the odds of facing them)."""
         out = []
-        for i, rnd in enumerate(ROUND_NAMES):
+        for rnd in ROUND_NAMES:
             reach = progress[rnd][team] / n
             c = opp[rnd].get(team)
             if reach <= 0.5 or not c:
@@ -545,17 +545,25 @@ def run_simulation(n: int = 1000, params: Params | None = None,
             name = max(c, key=c.get)
             if frozenset((team, name)) in played:
                 continue  # they have already played this round
-            # advance = P(reach the NEXT round) = P(win this game). A KO tie has no
-            # "draw" outcome — a level game is settled in extra time / penalties —
-            # so the team's real chance to go through folds those in. The sim's
-            # next-round reach probability is exactly that (no separate W/D/L).
-            nxt = ROUND_NAMES[i + 1] if i + 1 < len(ROUND_NAMES) else "Mästare"
-            out.append({"round": rnd, "opp": name,
-                        "opp_name_en": TEAM_SIGNALS.get(name, {}).get("name_en"),
-                        "reach": round(reach, 3),
-                        "opp_share": round(c[name] / sum(c.values()), 3),
-                        "advance": round(progress[nxt][team] / n, 3),
-                        "known": c[name] == sum(c.values())})
+            entry = {"round": rnd, "opp": name,
+                     "opp_name_en": TEAM_SIGNALS.get(name, {}).get("name_en"),
+                     "reach": round(reach, 3),
+                     "opp_share": round(c[name] / sum(c.values()), 3),
+                     "known": c[name] == sum(c.values())}
+            if entry["known"]:
+                # Opponent fixed -> betting breakdown for BOTH teams. A KO tie has
+                # no draw: advance = regulation win + (90' draw won in ET/pens).
+                # Mirrors knockout_match exactly (same goal model + shootout edge).
+                ha = p.ko_host_adv if team in HOSTS else 0
+                hb = p.ko_host_adv if name in HOSTS else 0
+                la, lb = expected_lambdas(TEAM_RATING[team], TEAM_RATING[name], p, ha, hb)
+                _, reg, draw, opp_reg = _match_outcome(la, lb, p.rho)
+                ps = min(0.85, max(0.15, 0.5 + (TEAM_RATING[team] - TEAM_RATING[name]) * 0.0004))
+                entry.update({"reg": round(reg, 3), "et": round(draw * ps, 3),
+                              "opp_reg": round(opp_reg, 3), "opp_et": round(draw * (1 - ps), 3),
+                              "advance": round(reg + draw * ps, 3),
+                              "opp_advance": round(opp_reg + draw * (1 - ps), 3)})
+            out.append(entry)
         return out
 
     # Per-team stage probabilities + external signals, sorted by title prob.
