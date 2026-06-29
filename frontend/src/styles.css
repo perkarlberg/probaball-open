@@ -333,6 +333,21 @@ button.link:hover { text-decoration-color: var(--accent); color: var(--accent); 
 .gm-bar .seg.home { background: var(--accent); }
 .gm-bar .seg.draw { background: var(--muted); opacity: 0.45; }
 .gm-bar .seg.away { background: var(--accent-2, var(--accent)); opacity: 0.7; }
+
+/* Knockout advance bar (KOBar) — 4 segments, colour=team, hatch=ET/penalties. */
+.ko-pred { margin: 4px 0; flex: 1; min-width: 0; }
+.ko-ends { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.85rem; margin-bottom: 4px; }
+.ko-end { display: inline-flex; align-items: center; min-width: 0; }
+.ko-bar { display: flex; height: 16px; border-radius: 4px; overflow: hidden; background: var(--line); }
+.ko-seg { height: 100%; }
+.ko-seg.h-reg, .ko-seg.h-et { background-color: var(--accent); }
+.ko-seg.a-reg, .ko-seg.a-et { background-color: #d6453f; }
+.ko-seg.h-et, .ko-seg.a-et { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.55) 0 3px, transparent 3px 6px); }
+.ko-legend { display: flex; gap: 14px; margin-top: 4px; align-items: center; }
+.ko-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 4px; background: var(--muted); }
+.ko-key.hatch { background-color: transparent; border: 1px solid var(--muted); background-image: repeating-linear-gradient(45deg, var(--muted) 0 2px, transparent 2px 4px); }
+.tm-ko-link { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; align-items: flex-start; }
+.tm-ko-link .tm-match-date { padding-top: 2px; }
 .gm-probs { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .gm-probs .strong { color: var(--text); font-weight: 700; }
 .gm-verdict { grid-column: 1 / -1; text-align: right; font-weight: 700; font-size: 0.8rem; margin-top: 1px; }

@@ -3,6 +3,7 @@ import Histogram from "./Histogram.jsx";
 import PlacementHistogram from "./PlacementHistogram.jsx";
 import TitleRaceChart from "./TitleRaceChart.jsx";
 import { Flag } from "../flags.jsx";
+import KOBar from "./KOBar.jsx";
 import { useI18n } from "../i18n.jsx";
 
 const pct = (v) => (v == null ? "–" : (v * 100).toFixed(1) + "%");
@@ -105,20 +106,16 @@ export default function TeamModal({ team, groupRow, matches, history, onMatchCli
                             Semifinal: "tm_rnd_semi", Final: "tm_rnd_final" }[k.round] || "tm_rnd_r16";
               const p0 = (v) => (v * 100).toFixed(0) + "%";
               if (k.known) {
-                // Both teams' chance to ADVANCE, split into a 90' win vs winning
-                // a level tie in extra time / penalties (no draw outcome in a KO).
-                const side = (lblText, flagTeam, adv, reg, et) => (
-                  <span className="tm-match" key={flagTeam}>
-                    <span className="tm-match-date">{lblText}</span>
-                    <span className="tm-match-opp"><Flag team={flagTeam} />{tn(flagTeam)}</span>
-                    <span className="tm-match-score">{p0(adv)}</span>
-                    <span className="tm-match-pred">{t("tm_ko_split", { reg: p0(reg), et: p0(et) })}</span>
-                  </span>
-                );
+                // Scheduled tie: clickable to its /match/ page; the bar shows both
+                // teams' advance %, split into a 90' win vs an ET/penalties win.
                 return (
-                  <li key={k.round} className="tm-ko-known">
-                    {side(t(lbl), team.team, k.advance, k.reg, k.et)}
-                    {side("", k.opp, k.opp_advance, k.opp_reg, k.opp_et)}
+                  <li key={k.round}>
+                    <button className="tm-match tm-ko-link"
+                            onClick={() => onMatchClick && onMatchClick(team.team, k.opp)}>
+                      <span className="tm-match-date">{t(lbl)}</span>
+                      <KOBar home={team.team} away={k.opp}
+                             hReg={k.reg} hEt={k.et} aEt={k.opp_et} aReg={k.opp_reg} />
+                    </button>
                   </li>
                 );
               }

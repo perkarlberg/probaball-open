@@ -1,14 +1,47 @@
 import Modal from "./Modal.jsx";
 import { Flag } from "../flags.jsx";
+import KOBar from "./KOBar.jsx";
 import { useI18n } from "../i18n.jsx";
 
 const ipct = (v) => Math.round(v * 100) + "%";
+const KO_LBL = { R32: "tm_rnd_r32", R16: "tm_rnd_r16", Kvartsfinal: "tm_rnd_quarter",
+                 Semifinal: "tm_rnd_semi", Final: "tm_rnd_final" };
 
-// Single group match: win/draw/loss probabilities + most-likely score, with
-// links to both teams and the group. Backs the crawlable /match/<a>-vs-<b>/
-// pages (sleeper "[A] vs [B] prediction" searches).
-export default function MatchModal({ match, group, onTeamClick, onGroupClick, onClose }) {
+// Single match page (/match/<a>-vs-<b>/): group ties show win/draw/loss + score;
+// knockout ties show each team's chance to ADVANCE, split 90' vs ET/penalties.
+export default function MatchModal({ match, group, ko, onTeamClick, onGroupClick, onClose }) {
   const { t, tn } = useI18n();
+
+  if (ko) {
+    const hAdv = ko.hReg + ko.hEt, aAdv = ko.aEt + ko.aReg;
+    const winner = hAdv >= aAdv ? ko.home : ko.away;
+    return (
+      <Modal
+        title={
+          <span className="mm-title">
+            <Flag team={ko.home} /> {tn(ko.home)} <span className="mm-vs">–</span> {tn(ko.away)} <Flag team={ko.away} />
+          </span>
+        }
+        subtitle={t(KO_LBL[ko.round] || "tm_rnd_r16")}
+        onClose={onClose}
+      >
+        <div className="mm-verdict">{t("gm_wins", { team: tn(winner) })} · {t("tm_ko_adv", { pct: ipct(Math.max(hAdv, aAdv)) })}</div>
+        <KOBar home={ko.home} away={ko.away} hReg={ko.hReg} hEt={ko.hEt} aEt={ko.aEt} aReg={ko.aReg} />
+        <div className="mm-probs">
+          <button className="link" onClick={() => onTeamClick(ko.home)}>{tn(ko.home)} {ipct(hAdv)}</button>
+          <button className="link" onClick={() => onTeamClick(ko.away)}>{tn(ko.away)} {ipct(aAdv)}</button>
+        </div>
+        <p className="mm-score muted small">
+          {tn(ko.home)}: {t("tm_ko_split", { reg: ipct(ko.hReg), et: ipct(ko.hEt) })} · {tn(ko.away)}: {t("tm_ko_split", { reg: ipct(ko.aReg), et: ipct(ko.aEt) })}
+        </p>
+        <div className="mm-links">
+          <button className="link" onClick={() => onTeamClick(ko.home)}><Flag team={ko.home} /> {tn(ko.home)}</button>
+          <button className="link" onClick={() => onTeamClick(ko.away)}><Flag team={ko.away} /> {tn(ko.away)}</button>
+        </div>
+      </Modal>
+    );
+  }
+
   if (!match) return null;
   const top = Math.max(match.p_home, match.p_draw, match.p_away);
   const verdict =

@@ -130,16 +130,27 @@ export default function App() {
     () => (result?.teams || []).map((t) => t.team).sort((x, y) => x.localeCompare(y, "sv")),
     [result]
   );
-  // Resolve a /match/ selection to the scheduled group fixture (+ its group).
+  // Resolve a /match/ selection to a scheduled group fixture, or a knockout tie
+  // (found via either team's next_ko breakdown), for the shared /match/ page.
   const matchInfo = useMemo(() => {
+    if (!matchSel || !matchSel.a || !matchSel.b) return null;
     const gm = result?.group_matches;
-    if (!matchSel || !matchSel.a || !matchSel.b || !gm) return null;
-    for (const g of Object.keys(gm)) {
-      const m = gm[g].find((x) => x.home === matchSel.a && x.away === matchSel.b);
-      if (m) return { match: m, group: g };
+    if (gm) {
+      for (const g of Object.keys(gm)) {
+        const m = gm[g].find((x) => x.home === matchSel.a && x.away === matchSel.b);
+        if (m) return { match: m, group: g };
+      }
     }
+    const A = teamByName[matchSel.a], B = teamByName[matchSel.b];
+    const findKO = (team, oppName) => (team?.next_ko || []).find((k) => k.known && k.opp === oppName);
+    let k = findKO(A, matchSel.b);
+    if (k) return { ko: { home: matchSel.a, away: matchSel.b, round: k.round,
+                          hReg: k.reg, hEt: k.et, aEt: k.opp_et, aReg: k.opp_reg } };
+    k = findKO(B, matchSel.a);
+    if (k) return { ko: { home: matchSel.a, away: matchSel.b, round: k.round,
+                          hReg: k.opp_reg, hEt: k.opp_et, aEt: k.et, aReg: k.reg } };
     return null;
-  }, [matchSel, result]);
+  }, [matchSel, result, teamByName]);
 
   // The visitor's own nation: their chosen team, else locale-detected. + rank.
   const country = useMemo(() => {
@@ -418,6 +429,7 @@ export default function App() {
         <MatchModal
           match={matchInfo.match}
           group={matchInfo.group}
+          ko={matchInfo.ko}
           onTeamClick={openTeam}
           onGroupClick={openGroup}
           onClose={close}
