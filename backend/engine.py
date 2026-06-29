@@ -537,7 +537,7 @@ def run_simulation(n: int = 1000, params: Params | None = None,
         R32 once groups are done) carries a W/D/L prediction; later rounds stay
         projected (most-likely opponent + the odds of facing them)."""
         out = []
-        for rnd in ROUND_NAMES:
+        for i, rnd in enumerate(ROUND_NAMES):
             reach = progress[rnd][team] / n
             c = opp[rnd].get(team)
             if reach <= 0.5 or not c:
@@ -545,18 +545,17 @@ def run_simulation(n: int = 1000, params: Params | None = None,
             name = max(c, key=c.get)
             if frozenset((team, name)) in played:
                 continue  # they have already played this round
-            g = {"round": rnd, "opp": name,
-                 "opp_name_en": TEAM_SIGNALS.get(name, {}).get("name_en"),
-                 "reach": round(reach, 3),
-                 "opp_share": round(c[name] / sum(c.values()), 3),
-                 "known": c[name] == sum(c.values())}
-            if g["known"]:    # opponent fixed -> show the match prediction
-                ha = p.ko_host_adv if team in HOSTS else 0
-                hb = p.ko_host_adv if name in HOSTS else 0
-                la, lb = expected_lambdas(TEAM_RATING[team], TEAM_RATING[name], p, ha, hb)
-                _, pw, pdr, pl = _match_outcome(la, lb, p.rho)
-                g["p_win"], g["p_draw"], g["p_loss"] = round(pw, 3), round(pdr, 3), round(pl, 3)
-            out.append(g)
+            # advance = P(reach the NEXT round) = P(win this game). A KO tie has no
+            # "draw" outcome — a level game is settled in extra time / penalties —
+            # so the team's real chance to go through folds those in. The sim's
+            # next-round reach probability is exactly that (no separate W/D/L).
+            nxt = ROUND_NAMES[i + 1] if i + 1 < len(ROUND_NAMES) else "Mästare"
+            out.append({"round": rnd, "opp": name,
+                        "opp_name_en": TEAM_SIGNALS.get(name, {}).get("name_en"),
+                        "reach": round(reach, 3),
+                        "opp_share": round(c[name] / sum(c.values()), 3),
+                        "advance": round(progress[nxt][team] / n, 3),
+                        "known": c[name] == sum(c.values())})
         return out
 
     # Per-team stage probabilities + external signals, sorted by title prob.

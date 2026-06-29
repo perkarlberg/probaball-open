@@ -109,7 +109,7 @@ export default function TeamModal({ team, groupRow, matches, history, onMatchCli
                     <span className="tm-match-date">{t(lbl)}</span>
                     <span className="tm-match-opp"><Flag team={k.opp} />{tn(k.opp)}</span>
                     {k.known
-                      ? <span className="tm-match-pred">{t("tm_pred", { pct: (k.p_win * 100).toFixed(0) + "%" })}</span>
+                      ? <span className="tm-match-pred">{t("tm_ko_adv", { pct: (k.advance * 100).toFixed(0) + "%" })}</span>
                       : <span className="tm-match-pred">{t("tm_ko_note", { pct: (k.opp_share * 100).toFixed(0) + "%" })}</span>}
                   </span>
                 </li>
