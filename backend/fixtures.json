@@ -1850,6 +1850,30 @@
       "home": 0,
       "away": 1,
       "winner": "Kanada"
+    },
+    {
+      "date": "2026-06-29",
+      "home_team": "Tyskland",
+      "away_team": "Paraguay",
+      "home": 1,
+      "away": 1,
+      "winner": "Paraguay"
+    },
+    {
+      "date": "2026-06-29",
+      "home_team": "Nederländerna",
+      "away_team": "Marocko",
+      "home": 1,
+      "away": 1,
+      "winner": "Marocko"
+    },
+    {
+      "date": "2026-06-29",
+      "home_team": "Brasilien",
+      "away_team": "Japan",
+      "home": 2,
+      "away": 1,
+      "winner": "Brasilien"
     }
   ]
 }
