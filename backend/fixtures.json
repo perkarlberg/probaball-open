@@ -1874,6 +1874,30 @@
       "home": 2,
       "away": 1,
       "winner": "Brasilien"
+    },
+    {
+      "date": "2026-06-30",
+      "home_team": "Frankrike",
+      "away_team": "Sverige",
+      "home": 3,
+      "away": 0,
+      "winner": "Frankrike"
+    },
+    {
+      "date": "2026-06-30",
+      "home_team": "Elfenbenskusten",
+      "away_team": "Norge",
+      "home": 1,
+      "away": 2,
+      "winner": "Norge"
+    },
+    {
+      "date": "2026-06-30",
+      "home_team": "Mexiko",
+      "away_team": "Ecuador",
+      "home": 2,
+      "away": 0,
+      "winner": "Mexiko"
     }
   ]
 }
