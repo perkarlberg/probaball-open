@@ -1898,6 +1898,30 @@
       "home": 2,
       "away": 0,
       "winner": "Mexiko"
+    },
+    {
+      "date": "2026-07-01",
+      "home_team": "England",
+      "away_team": "DR Kongo",
+      "home": 2,
+      "away": 1,
+      "winner": "England"
+    },
+    {
+      "date": "2026-07-01",
+      "home_team": "USA",
+      "away_team": "Bosnien",
+      "home": 2,
+      "away": 0,
+      "winner": "USA"
+    },
+    {
+      "date": "2026-07-01",
+      "home_team": "Belgien",
+      "away_team": "Senegal",
+      "home": 3,
+      "away": 2,
+      "winner": "Belgien"
     }
   ]
 }
