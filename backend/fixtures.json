@@ -1922,6 +1922,30 @@
       "home": 3,
       "away": 2,
       "winner": "Belgien"
+    },
+    {
+      "date": "2026-07-02",
+      "home_team": "Portugal",
+      "away_team": "Kroatien",
+      "home": 2,
+      "away": 1,
+      "winner": "Portugal"
+    },
+    {
+      "date": "2026-07-02",
+      "home_team": "Spanien",
+      "away_team": "Österrike",
+      "home": 3,
+      "away": 0,
+      "winner": "Spanien"
+    },
+    {
+      "date": "2026-07-02",
+      "home_team": "Schweiz",
+      "away_team": "Algeriet",
+      "home": 2,
+      "away": 0,
+      "winner": "Schweiz"
     }
   ]
 }
