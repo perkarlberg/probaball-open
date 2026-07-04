@@ -101,16 +101,28 @@ def main():
             written_group += 1
         else:
             rnd = _STAGE_ROUND.get(stage, stage)
-            winner = h if hs > as_ else (a if as_ > hs else None)
-            # football-data exposes penalties for KO draws; use them for winner.
-            if winner is None:
-                pens = (m.get("score") or {}).get("penalties") or {}
-                ph, pa = pens.get("home"), pens.get("away")
-                if ph is not None and pa is not None:
-                    winner = h if ph > pa else a
+            # football-data's `fullTime` for a KO decided on penalties INCLUDES
+            # the shootout tally (e.g. 1-1 a.e.t. + 3-4 pens -> fullTime 4-5).
+            # The goal model must see the on-pitch score (regular + extra time),
+            # not the shootout, so derive the play score and use penalties only
+            # to break a tie for the winner.
+            score = (m.get("score") or {})
+            reg = score.get("regularTime") or {}
+            ext = score.get("extraTime") or {}
+            pens = score.get("penalties") or {}
+            if reg.get("home") is not None:
+                ks_h = reg["home"] + (ext.get("home") or 0)
+                ks_a = reg["away"] + (ext.get("away") or 0)
+            elif pens.get("home") is not None:
+                ks_h, ks_a = hs - pens["home"], as_ - pens["away"]
+            else:
+                ks_h, ks_a = hs, as_
+            winner = h if ks_h > ks_a else (a if ks_a > ks_h else None)
+            if winner is None and pens.get("home") is not None:
+                winner = h if pens["home"] > pens["away"] else a
             ko_results[frozenset((h, a))] = {
                 "round": rnd, "date": date, "home_team": h, "away_team": a,
-                "home": hs, "away": as_, "winner": winner}
+                "home": ks_h, "away": ks_a, "winner": winner}
             written_ko += 1
 
     fx["ko_results"] = list(ko_results.values())
