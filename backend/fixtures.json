@@ -1844,6 +1844,7 @@
   ],
   "ko_results": [
     {
+      "round": "R32",
       "date": "2026-06-28",
       "home_team": "Sydafrika",
       "away_team": "Kanada",
@@ -1852,22 +1853,7 @@
       "winner": "Kanada"
     },
     {
-      "date": "2026-06-29",
-      "home_team": "Tyskland",
-      "away_team": "Paraguay",
-      "home": 1,
-      "away": 1,
-      "winner": "Paraguay"
-    },
-    {
-      "date": "2026-06-29",
-      "home_team": "Nederländerna",
-      "away_team": "Marocko",
-      "home": 1,
-      "away": 1,
-      "winner": "Marocko"
-    },
-    {
+      "round": "R32",
       "date": "2026-06-29",
       "home_team": "Brasilien",
       "away_team": "Japan",
@@ -1876,14 +1862,25 @@
       "winner": "Brasilien"
     },
     {
-      "date": "2026-06-30",
-      "home_team": "Frankrike",
-      "away_team": "Sverige",
-      "home": 3,
-      "away": 0,
-      "winner": "Frankrike"
+      "round": "R32",
+      "date": "2026-06-29",
+      "home_team": "Tyskland",
+      "away_team": "Paraguay",
+      "home": 1,
+      "away": 1,
+      "winner": "Paraguay"
     },
     {
+      "round": "R32",
+      "date": "2026-06-30",
+      "home_team": "Nederländerna",
+      "away_team": "Marocko",
+      "home": 1,
+      "away": 1,
+      "winner": "Marocko"
+    },
+    {
+      "round": "R32",
       "date": "2026-06-30",
       "home_team": "Elfenbenskusten",
       "away_team": "Norge",
@@ -1892,7 +1889,17 @@
       "winner": "Norge"
     },
     {
+      "round": "R32",
       "date": "2026-06-30",
+      "home_team": "Frankrike",
+      "away_team": "Sverige",
+      "home": 3,
+      "away": 0,
+      "winner": "Frankrike"
+    },
+    {
+      "round": "R32",
+      "date": "2026-07-01",
       "home_team": "Mexiko",
       "away_team": "Ecuador",
       "home": 2,
@@ -1900,6 +1907,7 @@
       "winner": "Mexiko"
     },
     {
+      "round": "R32",
       "date": "2026-07-01",
       "home_team": "England",
       "away_team": "DR Kongo",
@@ -1908,14 +1916,7 @@
       "winner": "England"
     },
     {
-      "date": "2026-07-01",
-      "home_team": "USA",
-      "away_team": "Bosnien",
-      "home": 2,
-      "away": 0,
-      "winner": "USA"
-    },
-    {
+      "round": "R32",
       "date": "2026-07-01",
       "home_team": "Belgien",
       "away_team": "Senegal",
@@ -1924,14 +1925,16 @@
       "winner": "Belgien"
     },
     {
+      "round": "R32",
       "date": "2026-07-02",
-      "home_team": "Portugal",
-      "away_team": "Kroatien",
+      "home_team": "USA",
+      "away_team": "Bosnien",
       "home": 2,
-      "away": 1,
-      "winner": "Portugal"
+      "away": 0,
+      "winner": "USA"
     },
     {
+      "round": "R32",
       "date": "2026-07-02",
       "home_team": "Spanien",
       "away_team": "Österrike",
@@ -1940,12 +1943,58 @@
       "winner": "Spanien"
     },
     {
+      "round": "R32",
       "date": "2026-07-02",
+      "home_team": "Portugal",
+      "away_team": "Kroatien",
+      "home": 2,
+      "away": 1,
+      "winner": "Portugal"
+    },
+    {
+      "round": "R32",
+      "date": "2026-07-03",
       "home_team": "Schweiz",
       "away_team": "Algeriet",
       "home": 2,
       "away": 0,
       "winner": "Schweiz"
+    },
+    {
+      "round": "R32",
+      "date": "2026-07-03",
+      "home_team": "Australien",
+      "away_team": "Egypten",
+      "home": 1,
+      "away": 1,
+      "winner": "Egypten"
+    },
+    {
+      "round": "R32",
+      "date": "2026-07-03",
+      "home_team": "Argentina",
+      "away_team": "Kap Verde",
+      "home": 3,
+      "away": 2,
+      "winner": "Argentina"
+    },
+    {
+      "round": "R32",
+      "date": "2026-07-04",
+      "home_team": "Colombia",
+      "away_team": "Ghana",
+      "home": 1,
+      "away": 0,
+      "winner": "Colombia"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-04",
+      "home_team": "Kanada",
+      "away_team": "Marocko",
+      "home": 0,
+      "away": 3,
+      "winner": "Marocko"
     }
   ]
 }
