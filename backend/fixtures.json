@@ -2004,6 +2004,24 @@
       "home": 0,
       "away": 1,
       "winner": "Frankrike"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-05",
+      "home_team": "Brasilien",
+      "away_team": "Norge",
+      "home": 1,
+      "away": 2,
+      "winner": "Norge"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-06",
+      "home_team": "Mexiko",
+      "away_team": "England",
+      "home": 2,
+      "away": 3,
+      "winner": "England"
     }
   ]
 }
