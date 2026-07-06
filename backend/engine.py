@@ -566,12 +566,25 @@ def run_simulation(n: int = 1000, params: Params | None = None,
             out.append(entry)
         return out
 
+    # Teams knocked out of a played knockout tie (the losing side of each
+    # recorded KO result); combined below with group non-qualifiers to flag
+    # eliminated teams so the UI can grey them out.
+    ko_losers = set()
+    if cond:
+        for key, w in cond.get("advanced", {}).items():
+            ko_losers.update(x for x in key if x != w)
+
     # Per-team stage probabilities + external signals, sorted by title prob.
     team_rows = []
     for t in TEAM_RATING:
         sig = TEAM_SIGNALS.get(t, {})
+        # Eliminated = lost a played KO tie, or (group fully implied) can no
+        # longer reach the R32 in any simulation. Only meaningful in tournament
+        # mode (cond present); pre-tournament every team is alive.
+        eliminated = bool(cond) and (t in ko_losers or progress["R32"][t] == 0)
         team_rows.append({
             "team": t,
+            "eliminated": eliminated,
             "name_en": sig.get("name_en"),
             "group": TEAM_GROUP[t],
             "rating": round(TEAM_RATING[t], 1),

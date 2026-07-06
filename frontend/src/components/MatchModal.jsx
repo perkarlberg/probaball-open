@@ -48,6 +48,16 @@ export default function MatchModal({ match, group, ko, onTeamClick, onGroupClick
     top === match.p_draw
       ? t("gm_draw")
       : t("gm_wins", { team: tn(top === match.p_home ? match.home : match.away) });
+  // Played group games lead with the actual full-time score (+ predicted/upset
+  // tags); the model's pre-match odds stay below as context.
+  const r = match.result;
+  const resultVerdict = r
+    ? r.home > r.away
+      ? t("gm_wins", { team: tn(match.home) })
+      : r.away > r.home
+        ? t("gm_wins", { team: tn(match.away) })
+        : t("gm_draw")
+    : null;
 
   return (
     <Modal
@@ -59,8 +69,18 @@ export default function MatchModal({ match, group, ko, onTeamClick, onGroupClick
       subtitle={`${t("group_label", { g: group })} · ${t("gm_matchday", { n: match.matchday })}`}
       onClose={onClose}
     >
-      <div className="mm-verdict">{verdict} · {ipct(top)}</div>
+      {r ? (
+        <div className="mm-verdict mm-result">
+          <strong className="mm-final">{r.home}–{r.away}</strong>
+          <span>{resultVerdict}</span>
+          {match.as_predicted && <span className="gm-tag ok">✓ {t("gm_as_pred")}</span>}
+          {match.upset && <span className="gm-tag upset">{t("gm_upset")}</span>}
+        </div>
+      ) : (
+        <div className="mm-verdict">{verdict} · {ipct(top)}</div>
+      )}
 
+      {r && <p className="mm-cap muted small">{t("mm_prematch")}</p>}
       <div className="gm-bar mm-bar">
         <span className="seg home" style={{ width: ipct(match.p_home) }} />
         <span className="seg draw" style={{ width: ipct(match.p_draw) }} />
@@ -76,7 +96,7 @@ export default function MatchModal({ match, group, ko, onTeamClick, onGroupClick
         </button>
       </div>
 
-      <p className="mm-score">{t("mm_score", { a: match.hg, b: match.ag })}</p>
+      {!r && <p className="mm-score">{t("mm_score", { a: match.hg, b: match.ag })}</p>}
 
       <div className="mm-links">
         <button className="link" onClick={() => onTeamClick(match.home)}>

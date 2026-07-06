@@ -61,7 +61,12 @@ export default function Leaderboard({ teams, onTeamClick, expanded, onExpandChan
         </thead>
         <tbody>
           {top.map((row, i) => (
-            <tr key={row.team} className="clickable" onClick={() => onTeamClick(row.team)}>
+            <tr
+              key={row.team}
+              className={"clickable" + (row.eliminated ? " eliminated" : "")}
+              title={row.eliminated ? t("eliminated_hint") : undefined}
+              onClick={() => onTeamClick(row.team)}
+            >
               <td className="rank">{i + 1}</td>
               <td className="team">
                 <button className="link">

@@ -1995,6 +1995,15 @@
       "home": 0,
       "away": 3,
       "winner": "Marocko"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-04",
+      "home_team": "Paraguay",
+      "away_team": "Frankrike",
+      "home": 0,
+      "away": 1,
+      "winner": "Frankrike"
     }
   ]
 }

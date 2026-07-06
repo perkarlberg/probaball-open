@@ -158,6 +158,12 @@ table { border-collapse: collapse; width: 100%; }
 .leaderboard .grp { color: var(--muted); }
 .num { text-align: right !important; font-variant-numeric: tabular-nums; }
 
+/* Eliminated teams (knocked out of the bracket): greyed out, 0% to advance. */
+.leaderboard tbody tr.eliminated { opacity: 0.4; }
+.leaderboard tbody tr.eliminated .team { font-weight: 500; }
+.leaderboard tbody tr.eliminated .cell-bar-fill { opacity: 0.1; }
+.leaderboard tbody tr.eliminated:hover { opacity: 0.65; }
+
 .cell-bar { position: relative; display: inline-block; min-width: 90px; height: 18px; }
 .cell-bar-fill {
   position: absolute; left: 0; top: 0; bottom: 0;
@@ -364,6 +370,9 @@ button.gm-verdict:hover { text-decoration: underline; }
 .mm-title { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .mm-title .mm-vs { color: var(--muted); font-weight: 400; }
 .mm-verdict { font-size: 1.15rem; font-weight: 800; margin: 4px 0 12px; }
+.mm-result { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mm-result .mm-final { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.mm-cap { margin: 0 0 4px; }
 .mm-bar { height: 10px; margin-bottom: 6px; }
 .mm-probs { display: flex; justify-content: space-between; font-size: 0.85rem; gap: 8px; }
 .mm-probs .link { font-weight: 600; }
