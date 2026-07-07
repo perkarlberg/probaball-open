@@ -2022,6 +2022,24 @@
       "home": 2,
       "away": 3,
       "winner": "England"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-06",
+      "home_team": "Portugal",
+      "away_team": "Spanien",
+      "home": 0,
+      "away": 1,
+      "winner": "Spanien"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-07",
+      "home_team": "USA",
+      "away_team": "Belgien",
+      "home": 1,
+      "away": 4,
+      "winner": "Belgien"
     }
   ]
 }
