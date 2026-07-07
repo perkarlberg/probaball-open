@@ -83,6 +83,30 @@ def enrich_group_matches(fx, group_matches):
                     e["as_predicted"], e["upset"] = g["as_predicted"], g["upset"]
 
 
+_KO_ORDER = {"R32": 0, "R16": 1, "QF": 2, "Kvartsfinal": 2, "SF": 3,
+             "Semifinal": 3, "3rd": 4, "Final": 5}
+
+
+def team_ko_played(fx):
+    """Map team key -> that team's PLAYED knockout games (oriented to the team),
+    for the team view. Each entry: round, date, opp, gf, ga, win, shootout (a
+    draw settled on penalties). The team view already lists group games and the
+    forward-looking `next_ko`; this fills in the KO games already contested."""
+    out = {}
+    for r in fx.get("ko_results", []):
+        h, a, w = r["home_team"], r["away_team"], r.get("winner")
+        shootout = r["home"] == r["away"]
+        for team, opp, gf, ga in ((h, a, r["home"], r["away"]),
+                                  (a, h, r["away"], r["home"])):
+            out.setdefault(team, []).append({
+                "round": r["round"], "date": r.get("date"), "opp": opp,
+                "gf": gf, "ga": ga, "win": w == team, "shootout": shootout,
+            })
+    for lst in out.values():
+        lst.sort(key=lambda e: _KO_ORDER.get(e["round"], 9))
+    return out
+
+
 def record_group_result(fx, home_sv, away_sv, hs, as_):
     """Write a scoreline into the matching group fixture (orientation-aware).
     Returns True if a fixture matched."""

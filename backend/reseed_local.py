@@ -55,6 +55,9 @@ def _tournament_block(result, today):
 
     cond = tm.build_cond(fx)
     tm.enrich_group_matches(fx, result.get("group_matches", {}))
+    ko_played = tm.team_ko_played(fx)
+    for row in result.get("teams", []):
+        row["ko_played"] = ko_played.get(row["team"], [])
     graded = tm.graded_results(fx)
     tight = tm.tight_upcoming(fx, today)
     scenarios = []

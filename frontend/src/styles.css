@@ -365,6 +365,7 @@ button.gm-verdict:hover { text-decoration: underline; }
 .gm-tag { font-size: 0.66rem; font-weight: 700; padding: 1px 6px; border-radius: 6px; }
 .gm-tag.ok { color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 14%, transparent); }
 .gm-tag.upset { color: #d24545; background: color-mix(in srgb, #d24545 14%, transparent); }
+.gm-tag.pens { color: var(--muted); background: color-mix(in srgb, var(--muted) 16%, transparent); font-weight: 600; }
 
 /* Match modal */
 .mm-title { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }

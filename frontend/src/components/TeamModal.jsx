@@ -9,6 +9,11 @@ import { useI18n } from "../i18n.jsx";
 const pct = (v) => (v == null ? "–" : (v * 100).toFixed(1) + "%");
 const american = (o) => (o == null ? "–" : o > 0 ? `+${o}` : `${o}`);
 const ROLE_KEY = { winner: "role_winner", finalist: "role_finalist", semifinalist: "role_semifinalist" };
+// Knockout-round labels, covering both the engine's names (next_ko) and
+// fetch_results' stage codes (ko_played): R32/R16/QF/SF/Final/3rd.
+const KO_LBL = { R32: "tm_rnd_r32", R16: "tm_rnd_r16", QF: "tm_rnd_quarter",
+                 Kvartsfinal: "tm_rnd_quarter", SF: "tm_rnd_semi", Semifinal: "tm_rnd_semi",
+                 Final: "tm_rnd_final", "3rd": "tm_rnd_third" };
 
 // Per-team deep dive: FIFA rank, bookmaker odds, expert predictions, and
 // histograms of simulated tournament + group-stage placement.
@@ -101,9 +106,21 @@ export default function TeamModal({ team, groupRow, matches, history, onMatchCli
                 </li>
               );
             })}
+            {(team.ko_played || []).map((k) => {
+              const cls = k.win ? "win" : k.gf === k.ga ? "draw" : "loss";
+              return (
+                <li key={"ko-" + k.round}>
+                  <span className="tm-match">
+                    <span className="tm-match-date">{t(KO_LBL[k.round] || "tm_rnd_r16")}</span>
+                    <span className="tm-match-opp"><Flag team={k.opp} />{tn(k.opp)}</span>
+                    <span className={"tm-match-score " + cls}>{k.gf}–{k.ga}</span>
+                    {k.shootout && <span className="gm-tag pens">{t("tm_pens")}</span>}
+                  </span>
+                </li>
+              );
+            })}
             {(team.next_ko || []).map((k) => {
-              const lbl = { R32: "tm_rnd_r32", R16: "tm_rnd_r16", Kvartsfinal: "tm_rnd_quarter",
-                            Semifinal: "tm_rnd_semi", Final: "tm_rnd_final" }[k.round] || "tm_rnd_r16";
+              const lbl = KO_LBL[k.round] || "tm_rnd_r16";
               const p0 = (v) => (v * 100).toFixed(0) + "%";
               if (k.known) {
                 // Scheduled tie: clickable to its /match/ page; the bar shows both
