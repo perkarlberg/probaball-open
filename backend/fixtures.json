@@ -2040,6 +2040,24 @@
       "home": 1,
       "away": 4,
       "winner": "Belgien"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-07",
+      "home_team": "Argentina",
+      "away_team": "Egypten",
+      "home": 3,
+      "away": 2,
+      "winner": "Argentina"
+    },
+    {
+      "round": "R16",
+      "date": "2026-07-07",
+      "home_team": "Schweiz",
+      "away_team": "Colombia",
+      "home": 0,
+      "away": 0,
+      "winner": "Schweiz"
     }
   ]
 }

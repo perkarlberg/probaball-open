@@ -1,62 +1,52 @@
 {
   "Betfair": {
-    "Argentina": 5.6,
-    "Belgium": 40.0,
-    "Colombia": 27.0,
-    "Egypt": 360.0,
-    "England": 6.6,
-    "France": 3.0,
-    "Morocco": 36.0,
-    "Norway": 19.0,
+    "Argentina": 5.4,
+    "Belgium": 38.0,
+    "England": 6.2,
+    "France": 3.05,
+    "Morocco": 34.0,
+    "Norway": 17.0,
     "Spain": 5.1,
-    "Switzerland": 100.0
+    "Switzerland": 42.0
   },
   "DraftKings": {
-    "Argentina": 5.5,
+    "Argentina": 5.0,
     "Belgium": 31.0,
-    "Colombia": 26.0,
-    "Egypt": 251.0,
-    "England": 6.0,
+    "England": 5.7,
     "France": 2.8,
-    "Morocco": 31.0,
-    "Norway": 18.0,
-    "Spain": 4.4,
-    "Switzerland": 75.0
+    "Morocco": 29.0,
+    "Norway": 16.0,
+    "Spain": 4.7,
+    "Switzerland": 31.0
   },
   "FanDuel": {
-    "Argentina": 5.5,
-    "Belgium": 28.0,
-    "Colombia": 23.0,
-    "Egypt": 251.0,
-    "England": 6.0,
+    "Argentina": 4.9,
+    "Belgium": 31.0,
+    "England": 5.8,
     "France": 2.75,
-    "Morocco": 31.0,
-    "Norway": 19.0,
-    "Spain": 4.3,
-    "Switzerland": 76.0
+    "Morocco": 28.0,
+    "Norway": 15.0,
+    "Spain": 4.7,
+    "Switzerland": 34.0
   },
   "Kalshi": {
-    "Argentina": 5.51,
-    "Belgium": 42.55,
-    "Colombia": 29.85,
-    "Egypt": 222.22,
-    "England": 6.97,
-    "France": 2.94,
-    "Morocco": 33.9,
-    "Norway": 17.39,
-    "Spain": 5.38,
-    "Switzerland": 117.65
+    "Argentina": 5.39,
+    "Belgium": 39.22,
+    "England": 6.51,
+    "France": 2.96,
+    "Morocco": 32.79,
+    "Norway": 15.75,
+    "Spain": 5.33,
+    "Switzerland": 45.45
   },
   "William Hill": {
-    "Argentina": 5.5,
-    "Belgium": 29.0,
-    "Colombia": 26.0,
-    "Egypt": 201.0,
-    "England": 6.5,
-    "France": 2.75,
-    "Morocco": 29.0,
+    "Argentina": 4.5,
+    "Belgium": 34.0,
+    "England": 6.0,
+    "France": 2.88,
+    "Morocco": 34.0,
     "Norway": 17.0,
-    "Spain": 5.0,
-    "Switzerland": 67.0
+    "Spain": 4.5,
+    "Switzerland": 34.0
   }
 }
