@@ -2058,6 +2058,15 @@
       "home": 0,
       "away": 0,
       "winner": "Schweiz"
+    },
+    {
+      "round": "QF",
+      "date": "2026-07-09",
+      "home_team": "Frankrike",
+      "away_team": "Marocko",
+      "home": 2,
+      "away": 0,
+      "winner": "Frankrike"
     }
   ]
 }
