@@ -2067,6 +2067,33 @@
       "home": 2,
       "away": 0,
       "winner": "Frankrike"
+    },
+    {
+      "round": "QF",
+      "date": "2026-07-10",
+      "home_team": "Spanien",
+      "away_team": "Belgien",
+      "home": 2,
+      "away": 1,
+      "winner": "Spanien"
+    },
+    {
+      "round": "QF",
+      "date": "2026-07-11",
+      "home_team": "Norge",
+      "away_team": "England",
+      "home": 1,
+      "away": 2,
+      "winner": "England"
+    },
+    {
+      "round": "QF",
+      "date": "2026-07-12",
+      "home_team": "Argentina",
+      "away_team": "Schweiz",
+      "home": 3,
+      "away": 1,
+      "winner": "Argentina"
     }
   ]
 }
