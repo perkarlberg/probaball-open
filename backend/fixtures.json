@@ -2094,6 +2094,15 @@
       "home": 3,
       "away": 1,
       "winner": "Argentina"
+    },
+    {
+      "round": "SF",
+      "date": "2026-07-14",
+      "home_team": "Frankrike",
+      "away_team": "Spanien",
+      "home": 0,
+      "away": 2,
+      "winner": "Spanien"
     }
   ]
 }
