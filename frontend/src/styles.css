@@ -225,6 +225,18 @@ table { border-collapse: collapse; width: 100%; }
 .match-team { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 96px; }
 .match-goals { color: var(--muted); font-variant-numeric: tabular-nums; }
 .pen { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 0.6rem; color: var(--warn); background: var(--bg); padding: 0 3px; border-radius: 3px; }
+/* Played matches keep the solid, "locked" look; simulated (future) matches are
+   drawn dashed and slightly faded so the bracket reads as fact + projection. */
+.match.sim {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--line) 55%, var(--muted));
+  background: color-mix(in srgb, var(--panel) 85%, transparent);
+}
+.match.sim .match-team, .match.sim .match-goals { opacity: 0.82; }
+.bracket-legend { display: flex; gap: 16px; margin: 0 0 12px; font-size: 0.74rem; color: var(--muted); }
+.bracket-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.bracket-legend .swatch { width: 20px; height: 13px; border-radius: 3px; border: 1px solid var(--line); background: var(--panel); }
+.bracket-legend .swatch.sim { border-style: dashed; border-color: color-mix(in srgb, var(--line) 55%, var(--muted)); background: color-mix(in srgb, var(--panel) 85%, transparent); }
 .champion-col { justify-content: center; }
 .champion-box {
   background: linear-gradient(135deg, #14322a, #14323f);

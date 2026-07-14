@@ -349,6 +349,9 @@ def knockout_match(a, b, p: Params, record: list | None = None, forced=None, con
         pa = 0.5 + (TEAM_RATING[a] - TEAM_RATING[b]) * 0.0004
         winner = a if random.random() < max(0.15, min(0.85, pa)) else b
         shootout = True
+    # A played knockout is one whose real scoreline was conditioned in via `cond`;
+    # everything else in this bracket is a simulated future outcome.
+    played = cond is not None and frozenset((a, b)) in cond.get("results", {})
     # A played knockout decided on penalties: fix the team that actually advanced
     # (the scoreline alone can't tell us the shootout result).
     if cond is not None:
@@ -357,7 +360,8 @@ def knockout_match(a, b, p: Params, record: list | None = None, forced=None, con
             winner = adv
     if record is not None:
         record.append({"a": a, "b": b, "ga": ga, "gb": gb, "winner": winner,
-                       "shootout": shootout, "forced": forced_w is not None})
+                       "shootout": shootout, "forced": forced_w is not None,
+                       "played": played})
     return winner
 
 
