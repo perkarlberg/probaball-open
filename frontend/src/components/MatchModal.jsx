@@ -25,7 +25,7 @@ export default function MatchModal({ match, group, ko, onTeamClick, onGroupClick
         subtitle={t(KO_LBL[ko.round] || "tm_rnd_r16")}
         onClose={onClose}
       >
-        <div className="mm-verdict">{t("gm_wins", { team: tn(winner) })} · {t("tm_ko_adv", { pct: ipct(Math.max(hAdv, aAdv)) })}</div>
+        <div className="mm-verdict">{t("gm_wins", { team: tn(winner) })} · {t(ko.round === "Final" ? "tm_ko_champ" : "tm_ko_adv", { pct: ipct(Math.max(hAdv, aAdv)) })}</div>
         <KOBar home={ko.home} away={ko.away} hReg={ko.hReg} hEt={ko.hEt} aEt={ko.aEt} aReg={ko.aReg} />
         <div className="mm-probs">
           <button className="link" onClick={() => onTeamClick(ko.home)}>{tn(ko.home)} {ipct(hAdv)}</button>
