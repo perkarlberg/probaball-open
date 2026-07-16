@@ -1,26 +1,22 @@
 {
   "Betfair": {
-    "Argentina": 5.3,
-    "England": 4.2,
-    "Spain": 1.74
+    "Argentina": 2.4,
+    "Spain": 1.7
   },
   "DraftKings": {
-    "Argentina": 5.0,
-    "England": 4.0,
-    "Spain": 1.64
+    "Argentina": 2.25,
+    "Spain": 1.62
   },
   "FanDuel": {
-    "Argentina": 4.7,
-    "England": 3.9
+    "Argentina": 2.34,
+    "Spain": 2.3
   },
   "Kalshi": {
-    "Argentina": 5.1,
-    "England": 4.39,
-    "Spain": 1.73
+    "Argentina": 2.37,
+    "Spain": 1.72
   },
   "William Hill": {
-    "Argentina": 5.0,
-    "England": 3.6,
-    "Spain": 1.7
+    "Argentina": 2.2,
+    "Spain": 1.62
   }
 }
