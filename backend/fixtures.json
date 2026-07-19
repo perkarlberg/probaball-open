@@ -2112,6 +2112,15 @@
       "home": 1,
       "away": 2,
       "winner": "Argentina"
+    },
+    {
+      "round": "3rd",
+      "date": "2026-07-18",
+      "home_team": "Frankrike",
+      "away_team": "England",
+      "home": 4,
+      "away": 6,
+      "winner": "England"
     }
   ]
 }
